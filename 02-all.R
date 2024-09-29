@@ -1,7 +1,5 @@
 source("00-environment-setup.R")
 
-#source("02-chart-interest-by-investment.R")
-
 source("02-chart-interest-daily.R")
 source("02-chart-interest-total.R")
 
