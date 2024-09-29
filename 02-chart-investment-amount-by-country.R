@@ -5,17 +5,18 @@ library(tidyverse)
 # One chart per year:
 #   - Display amount of money invested in each country.
 
-pb |> 
-  mutate(purchase_year = year(date_of_purchase)) |> 
-  group_by(purchase_year, country) |> 
-  arrange(country) |> 
+pb_transactions |> 
+  filter(type == "INVESTMENT") |> 
+  mutate(year = year(date)) |> 
+  group_by(year, country) |> 
   summarize(
-    sum = sum(invested_amount)
+    sum = sum(amount),
+    .groups = "drop_last"
   ) |> 
   ggplot(aes(x = country, y = sum)) +
   geom_col() +
-  facet_wrap(~purchase_year) +
-  guides(x = guide_axis(angle = 90)) +
+  facet_wrap(~ year, ncol = 1) +
+  guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount by country (per year)",
     x = "Country",

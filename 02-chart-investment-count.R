@@ -5,21 +5,6 @@ library(tidyverse)
 # One chart per year:
 #   - Display investments count in each country.
 
-# Starting from investments
-pb |> 
-  mutate(purchase_year = year(date_of_purchase)) |> 
-  arrange(purchase_year) |> 
-  ggplot(aes(x = country)) +
-  geom_bar() +
-  facet_wrap(~purchase_year) +
-  guides(x = guide_axis(angle = 90)) +
-  labs(
-    title = "Investment count by year and country",
-    x = "Country",
-    y = "Count"
-  )
-
-# Starting from transactions
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
   mutate(year = year(date)) |> 
@@ -27,10 +12,10 @@ pb_transactions |>
   group_by(country) |> 
   ggplot(aes(x = country)) +
   geom_bar() +
-  facet_wrap(~year) +
-  guides(x = guide_axis(angle = 90)) +
+  facet_wrap(~ year, ncol = 1) +
+  guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Investment count by year and country",
+    title = "Investment count by country (per year)",
     x = "Country",
     y = "Count"
   )

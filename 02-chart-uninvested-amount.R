@@ -1,0 +1,84 @@
+library(dplyr)
+library(purrr)
+
+# ------------------------------------------------------------------------------
+# Calculate total amount for each transaction type
+
+# Note: the value is stored in a temporary tibble because when it is displayed
+# it looses number precision.
+
+temp <- pb_transactions |> 
+  group_by(type) |> 
+  summarize(
+    n = n(),
+    total = sum(amount)
+  )
+
+
+# ------------------------------------------------------------------------------
+# Calculate uninvested amount at a specific date.
+
+# Note: the value is stored in a temporary tibble because when it is displayed
+# it looses number precision.
+
+temp <- pb_transactions |> 
+  filter(date <= ymd("2024-09-29")) |> 
+  mutate(
+    amount2 = ifelse(type == "INVESTMENT", -amount, amount)
+  ) |> 
+  summarize(
+    total = sum(amount2)
+  )
+
+# ------------------------------------------------------------------------------
+# Uninvested amount by date
+
+pb_transactions |> 
+  arrange(date) |> 
+  mutate(
+    amount2 = ifelse(type == "INVESTMENT", -amount, amount),
+    uninvested_amount = map_dbl(date, ~ sum(amount2[date < .x]))
+  ) |>
+  ggplot(aes(x = date, y = uninvested_amount)) +
+  geom_area(alpha = .5) +
+  geom_step(direction = "hv", color = "black") +
+  geom_smooth() +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
+  guides(x = guide_axis(angle = 60)) +
+  labs(
+    title = "Cash drag (uninvested amount)",
+    x = "Date",
+    y = "Uninvested amount"
+  )
+
+# Save
+ggsave("charts/uninvested-amount-by-date.png", width=30, height=20, units="cm", dpi=300)
+
+
+# ------------------------------------------------------------------------------
+# Uninvested amount and total amount by date
+
+pb_transactions |> 
+  arrange(date) |> 
+  mutate(
+    amount2 = ifelse(type == "INVESTMENT", -amount, amount),
+    uninvested_amount = map_dbl(date, ~ sum(amount2[date < .x])),
+    amount3 = ifelse(is.element(type, c("DEPOSIT", "BUYBACK_INTEREST", "REPAYMENT_INTEREST")), amount, 0),
+    total_amount = map_dbl(date, ~ sum(amount3[date <= .x])),
+  ) |>
+  ggplot(aes(x = date)) +
+  geom_area(aes(y = total_amount), alpha = .5, fill = "#bada55") +
+  geom_step(aes(y = total_amount), direction = "hv", color = "darkgreen") +
+  geom_area(aes(y = uninvested_amount), alpha = .5) +
+  geom_step(aes(y = uninvested_amount), direction = "hv", alpha = .5, color = "black") +
+  geom_smooth(aes(y = uninvested_amount)) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
+  guides(x = guide_axis(angle = 60)) +
+  labs(
+    title = "Cash drag (uninvested amount) and total amount",
+    x = "Date",
+    y = "Amount"
+  )
+
+# Save
+ggsave("charts/uninvested-amount-and-total-amount-by-date.png", width=30, height=20, units="cm", dpi=300)
