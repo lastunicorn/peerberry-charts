@@ -21,4 +21,4 @@ pb_transactions |>
   )
 
 # Save
-ggsave("charts/investment-count-by-country-in-each-year.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/investment-count-by-country-per-year.png", width=30, height=20, units="cm", dpi=300)

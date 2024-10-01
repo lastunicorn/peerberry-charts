@@ -19,11 +19,11 @@ pb_transactions |>
   labs(
     title = "Total interest (ever)",
     x = "Date",
-    y = "Amount"
+    y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/interest-total-over-time.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-total-ever.png", width=30, height=20, units="cm", dpi=300)
 
 
 # ------------------------------------------------------------------------------
@@ -47,8 +47,8 @@ pb_transactions |>
   labs(
     title = "Total interest vs. total amount (ever)",
     x = "Date",
-    y = "Amount"
+    y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/interest-total-and-amount-total-over-time.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-total-and-amount-total-ever.png", width=30, height=20, units="cm", dpi=300)

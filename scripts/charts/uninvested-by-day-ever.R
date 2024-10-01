@@ -1,34 +1,6 @@
 library(dplyr)
 library(purrr)
 
-# ------------------------------------------------------------------------------
-# Calculate total amount for each transaction type
-
-# Note: the value is stored in a temporary tibble because when it is displayed
-# it looses number precision.
-
-temp <- pb_transactions |> 
-  group_by(type) |> 
-  summarize(
-    n = n(),
-    total = sum(amount)
-  )
-
-
-# ------------------------------------------------------------------------------
-# Calculate uninvested amount at a specific date.
-
-# Note: the value is stored in a temporary tibble because when it is displayed
-# it looses number precision.
-
-temp <- pb_transactions |> 
-  filter(date <= ymd("2024-09-29")) |> 
-  mutate(
-    amount2 = ifelse(type == "INVESTMENT", -amount, amount)
-  ) |> 
-  summarize(
-    total = sum(amount2)
-  )
 
 # ------------------------------------------------------------------------------
 # Uninvested amount by date
@@ -46,7 +18,7 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag (uninvested amount)",
+    title = "Cash drag (uninvested amount) (ever)",
     x = "Date",
     y = "Uninvested amount"
   )
@@ -75,9 +47,9 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag (uninvested amount) and total amount",
+    title = "Cash drag (uninvested amount) and total amount (ever)",
     x = "Date",
-    y = "Amount"
+    y = "Amount (€)"
   )
 
 # Save

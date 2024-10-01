@@ -1,3 +1,4 @@
+library(readxl)
 library(tidyverse)
 
 
@@ -20,15 +21,17 @@ library(tidyverse)
 
 
 pb <- read_xlsx("data-raw/investments - finished.xlsx") |>
-  select(c(1, 2, 4, 5, 6, 8, 10, 12, 13)) |> 
+  select(c(1, 2, 4, 5, 6, 8, 9, 10, 12, 13)) |> 
   janitor::clean_names() |>  
-  rename("last_received_payment_date" = "date_of_received_payment") |>
-  relocate(last_received_payment_date, .after = received_payments) |> 
+  rename("final_payment_date" = "date_of_received_payment") |>
+  rename("estimated_final_payment_date" = "final_payment_date_according_to_the_schedule") |>
+  relocate(final_payment_date, .after = received_payments) |> 
   mutate(
     loan_id = as.character(loan_id),
     date_of_purchase = as.Date(date_of_purchase),
     loan_type = as.factor(loan_type),
-    last_received_payment_date = as.Date(last_received_payment_date),
+    estimated_final_payment_date = as.Date(estimated_final_payment_date),
+    final_payment_date = as.Date(final_payment_date),
     status = as.factor(status)
   )
 
@@ -55,13 +58,14 @@ pb <- read_xlsx("data-raw/investments - finished.xlsx") |>
 # col_factor(c("FINISHED", "CURRENT", "LATE")) # Status (17)
 
 pb <- read_xlsx("data-raw/investments - current.xlsx") |>
-  select(c(1, 2, 4, 5, 6, 8, 14, 15, 17)) |> 
+  select(c(1, 2, 4, 5, 6, 8, 9, 14, 15, 17)) |> 
   janitor::clean_names() |>  
+  rename("final_payment_date" = "last_received_payment_date") |>
   mutate(
     loan_id = as.character(loan_id),
     date_of_purchase = as.Date(date_of_purchase),
     loan_type = as.factor(loan_type),
-    last_received_payment_date = as.Date(last_received_payment_date),
+    estimated_final_payment_date = as.Date(estimated_final_payment_date),
     status = as.factor(status)
   ) |> 
   rbind(pb)

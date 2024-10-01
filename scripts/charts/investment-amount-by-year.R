@@ -22,7 +22,7 @@ pb_transactions |>
   labs(
     title = "Investment amount by year (per country)",
     x = "Purchease year",
-    y = "Amount"
+    y = "Amount (€)"
   )
 
 # Save

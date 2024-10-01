@@ -20,8 +20,8 @@ pb_transactions |>
   labs(
     title = "Investment amount by country (per year)",
     x = "Country",
-    y = "Amount"
+    y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/investment-amount-by-country-in-each-year.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/investment-amount-by-country-per-year.png", width=30, height=20, units="cm", dpi=300)
