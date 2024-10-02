@@ -2,8 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# One chart per year:
-#   - Display amount of money invested in each country.
+# Amount of money invested in each country (per year)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
