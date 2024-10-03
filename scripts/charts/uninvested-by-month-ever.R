@@ -12,12 +12,12 @@ pb_transactions |>
   group_by(date) |> 
   summarize(uninvested_amount = first(uninvested_amount)) |> 
   mutate(
-    date_as_month = as.Date(ISOdate(year(date), month(date), 1)),
+    month_as_date = floor_date(date, "month"),
     days_in_month = lubridate::days_in_month(date)
   ) |> 
-  group_by(date_as_month) |>
+  group_by(month_as_date) |>
   summarize(uninvested_amount = sum(uninvested_amount) / mean(days_in_month)) |> 
-  ggplot(aes(x = date_as_month, y = uninvested_amount)) +
+  ggplot(aes(x = month_as_date, y = uninvested_amount)) +
   geom_col() +
   guides(x = guide_axis(angle = 60)) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +

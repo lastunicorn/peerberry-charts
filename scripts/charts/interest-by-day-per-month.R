@@ -3,8 +3,7 @@ library(lubridate)
 
 
 # ------------------------------------------------------------------------------
-# One chart per month:
-#   - Interest (daily)
+# Interest daily (per month)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -13,12 +12,12 @@ pb_transactions |>
   summarize(interest_amount = sum(amount)) |>
   mutate(
     year = year(date),
-    month = format_ISO8601(date, precision = "ym"),
+    month = floor_date(date, "month"),
     day = day(date)
   ) |>
   ggplot(aes(x = day)) +
   geom_col(aes(y = interest_amount)) +
-  facet_wrap(~ month) +
+  facet_wrap(~ month, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest daily (per month)",
     x = "Date",

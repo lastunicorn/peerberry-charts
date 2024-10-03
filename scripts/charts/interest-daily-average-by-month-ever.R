@@ -7,13 +7,13 @@ library(tidyverse)
 pb_transactions |>
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
   mutate(
-    date_as_month = as.Date(ISOdate(year(date), month(date), 1)),
+    month_as_date = floor_date(date, "month"),
     days_in_month = lubridate::days_in_month(date)
   ) |>
-  group_by(date_as_month) |>
+  group_by(month_as_date) |>
   arrange(date) |>
   summarize(interest_amount = sum(amount) / first(days_in_month)) |>
-  ggplot(aes(x = date_as_month, y = interest_amount)) +
+  ggplot(aes(x = month_as_date, y = interest_amount)) +
   geom_col() +
   guides(x = guide_axis(angle = 60)) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +

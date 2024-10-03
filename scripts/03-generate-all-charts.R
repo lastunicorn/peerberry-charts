@@ -1,17 +1,18 @@
 # ------------------------------------------------------------------------------
-# Setup environment
-
-source("scripts/misc/environment-setup.R")
-
-
-# ------------------------------------------------------------------------------
 # Generate charts - Interest
 
+source("scripts/charts/interest-amount-by-week-day-per-month.R")
+source("scripts/charts/interest-amount-by-week-day-per-year.R")
+
 source("scripts/charts/interest-by-day-ever.R")
-#source("scripts/charts/interest-by-day-per-month.R")
+source("scripts/charts/interest-by-day-per-month.R")
 source("scripts/charts/interest-by-day-per-year.R")
 source("scripts/charts/interest-by-month-ever.R")
+source("scripts/charts/interest-by-week-ever.R")
 source("scripts/charts/interest-by-year-ever.R")
+
+source("scripts/charts/interest-count-by-week-day-per-month.R")
+source("scripts/charts/interest-count-by-week-day-per-year.R")
 
 source("scripts/charts/interest-daily-average-by-month-ever.R")
 

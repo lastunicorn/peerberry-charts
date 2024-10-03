@@ -6,7 +6,7 @@ pb_transactions |>
   #filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
   arrange(date) |> 
   mutate(
-    date_as_month = as.Date(ISOdate(year(date), month(date), 1)),
+    month_as_date = floor_date(date, "month"),
     amount_interest = ifelse(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST")), amount, 0),
     total_interest = map_dbl(date, ~ sum(amount_interest[date <= .x])),
     amount_uninvested = ifelse(type == "INVESTMENT", -amount, amount),
@@ -14,11 +14,11 @@ pb_transactions |>
   ) |>
   group_by(date) |> 
   summarize(
-    date_as_month = first(date_as_month),
+    month_as_date = first(month_as_date),
     total_interest = first(total_interest),
     uninvested_amount = first(uninvested_amount)
   ) |> 
-  group_by(date_as_month) |>
+  group_by(month_as_date) |>
   summarize(
     total_interest = first(total_interest),
     uninvested_amount = mean(uninvested_amount)

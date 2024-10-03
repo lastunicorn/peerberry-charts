@@ -15,7 +15,7 @@ pb_transactions |>
     .groups = "drop_last"
   ) |> 
   ggplot(aes(x = year, y = total_amount)) +
-  geom_col() +
+  geom_col(width = .75) +
   facet_wrap(~ country) +
   guides(x = guide_axis(angle = 60)) +
   labs(
