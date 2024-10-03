@@ -12,7 +12,7 @@ pb_transactions |>
     year = year(date),
     date_without_year = as.Date(ISOdate(2000, month(date), day(date))),
     amount2 = ifelse(type == "INVESTMENT", -amount, amount),
-    uninvested_amount = map_dbl(date, ~ sum(amount2[date < .x]))
+    uninvested_amount = map_dbl(date, ~ sum(amount2[date <= .x]))
   ) |>
   group_by(date) |> 
   summarize(

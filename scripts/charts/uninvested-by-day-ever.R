@@ -9,7 +9,7 @@ pb_transactions |>
   arrange(date) |> 
   mutate(
     amount2 = ifelse(type == "INVESTMENT", -amount, amount),
-    uninvested_amount = map_dbl(date, ~ sum(amount2[date < .x]))
+    uninvested_amount = map_dbl(date, ~ sum(amount2[date <= .x]))
   ) |>
   group_by(date) |> 
   summarize(
@@ -38,7 +38,7 @@ pb_transactions |>
   arrange(date) |> 
   mutate(
     amount2 = ifelse(type == "INVESTMENT", -amount, amount),
-    uninvested_amount = map_dbl(date, ~ sum(amount2[date < .x])),
+    uninvested_amount = map_dbl(date, ~ sum(amount2[date <= .x])),
     amount3 = ifelse(is.element(type, c("DEPOSIT", "BUYBACK_INTEREST", "REPAYMENT_INTEREST")), amount, 0),
     total_amount = map_dbl(date, ~ sum(amount3[date <= .x])),
   ) |>

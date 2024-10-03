@@ -14,6 +14,7 @@ pb_transactions |>
   ) |> 
   ggplot(aes(x = country, y = sum)) +
   geom_col() +
+  geom_text(aes(label = sum), vjust = -0.5, size = 3) +
   facet_wrap(~ year, ncol = 1) +
   guides(x = guide_axis(angle = 60)) +
   labs(

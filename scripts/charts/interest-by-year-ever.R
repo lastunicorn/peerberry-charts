@@ -13,8 +13,9 @@ pb_transactions |>
   group_by(year) |>
   summarize(interest_amount = sum(amount)) |>
   arrange(year) |> 
-  ggplot(aes(x = year)) +
-  geom_col(aes(y = interest_amount), width = .5) +
+  ggplot(aes(x = year, y = interest_amount)) +
+  geom_col(width = .5) +
+  geom_text(aes(label = interest_amount), vjust = -0.5, size = 3) +
   labs(
     title = "Interest by year (ever)",
     x = "Year",

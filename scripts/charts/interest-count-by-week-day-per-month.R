@@ -10,8 +10,11 @@ pb_transactions |>
     month_as_date = floor_date(date, "month"),
     week_day = wday(date, label = TRUE)
   ) |> 
-  ggplot(aes(x = week_day)) +
-  geom_bar(width = .75) +
+  group_by(month_as_date, week_day) |> 
+  summarize(count = n()) |> 
+  ggplot(aes(x = week_day, y = count)) +
+  geom_col(width = .75) +
+  geom_text(aes(label = count), vjust = -0.5, size = 3) +
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest count by week days (per month)",

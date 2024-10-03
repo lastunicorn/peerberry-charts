@@ -16,6 +16,7 @@ pb_transactions |>
   ) |> 
   ggplot(aes(x = year, y = total_amount)) +
   geom_col(width = .75) +
+  geom_text(aes(label = total_amount), vjust = -0.5, size = 3) +
   facet_wrap(~ country) +
   guides(x = guide_axis(angle = 60)) +
   labs(
