@@ -9,7 +9,9 @@ temp <- pb_transactions |>
   summarize(
     n = n(),
     total = sum(amount)
-  )
+  ) |> 
+  with(split(c(n, total), factor(type, levels = unique(type)))) |> 
+  print(digits = 10)
 
 
 # ------------------------------------------------------------------------------
@@ -18,15 +20,16 @@ temp <- pb_transactions |>
 # Note: the value is stored in a temporary tibble because when it is displayed
 # it looses number precision.
 
-temp <- pb_transactions |> 
-  filter(date <= "2024-10-02") |> 
+pb_transactions |> 
+  filter(date <= "2024-10-03") |> 
   mutate(
     amount2 = ifelse(type == "INVESTMENT", -amount, amount)
   ) |> 
   summarize(
     total = sum(amount2)
   ) |> 
-  print()
+  deframe() |> 
+  print(digits = 10)
 
 # ------------------------------------------------------------------------------
 # Count long investments (> 35 days)
@@ -34,4 +37,5 @@ temp <- pb_transactions |>
 pb |> 
   filter(status == "CURRENT" | status == "LATE") |>
   filter(estimated_final_payment_date - date_of_purchase > 35) |> 
-  count()
+  count() |> 
+  deframe()

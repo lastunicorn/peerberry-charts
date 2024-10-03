@@ -14,6 +14,7 @@ pb_transactions |>
   summarize(interest_amount = sum(amount)) |> 
   ggplot(aes(x = week_day, y = interest_amount)) +
   geom_col(width = .75) +
+  geom_text(aes(label = interest_amount), vjust = -0.5, size = 3, color = "#666") +
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest amount by week days (per month)",
