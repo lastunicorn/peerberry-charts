@@ -57,3 +57,7 @@ convert_to_factor <- function(data, column, allowed_levels) {
   
   return(data)
 }
+
+ensure_dir <- function(path) {
+  ifelse(dir.exists(path), FALSE, dir.create(path))
+}

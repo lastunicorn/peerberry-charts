@@ -1,12 +1,10 @@
 library(tidyverse)
 
-# ------------------------------------------------------------------------------
+
+ensure_dir(pb.data_dir)
+
 # Save investments
+write_rds(pb, file.path(pb.data_dir, "pb.rds"))
 
-write_rds(pb, "data/pb.rds")
-
-
-# ------------------------------------------------------------------------------
 # Save transactions
-
-write_rds(pb_transactions, "data/pb_transactions.rds")
+write_rds(pb_transactions, file.path(pb.data_dir, "pb_transactions.rds"))
