@@ -3,7 +3,7 @@ library(lubridate)
 
 
 # ------------------------------------------------------------------------------
-# Interest daily (per month)
+# Interest cumulative amount daily (per month)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -19,10 +19,10 @@ pb_transactions |>
   geom_col(aes(y = interest_amount)) +
   facet_wrap(~ month, labeller = as_labeller(month_year_labeller)) +
   labs(
-    title = "Interest daily (per month)",
+    title = "Interest cumulative amount by day (per month)",
     x = "Date",
     y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/interest-by-day-per-month.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-cumulative-amount-by-day-per-month.png", width=30, height=20, units="cm", dpi=300)

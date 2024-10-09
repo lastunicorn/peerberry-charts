@@ -3,8 +3,7 @@ library(lubridate)
 
 
 # ------------------------------------------------------------------------------
-# One chart per year:
-#   - Interest daily (per year)
+# Interest cumulative amount daily (per year)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -28,10 +27,10 @@ pb_transactions |>
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   labs(
-    title = "Interest daily (per year)",
+    title = "Interest cumulative amount by day (per year)",
     x = "Date",
     y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/interest-by-day-per-year.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-cumulative-amount-by-day-per-year.png", width=30, height=20, units="cm", dpi=300)
