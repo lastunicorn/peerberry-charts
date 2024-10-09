@@ -3,7 +3,7 @@ library(lubridate)
 
 
 # ------------------------------------------------------------------------------
-# Interest by day (ever)
+# Interest cumulative amount by day (ever)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -16,10 +16,10 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Interest daily (ever)",
+    title = "Interest cumulative amount by day (ever)",
     x = "Date",
     y = "Amount (€)"
   )
 
 # Save
-ggsave("charts/interest-by-day-ever.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-cumulative-amount-by-day-ever.png", width=30, height=20, units="cm", dpi=300)

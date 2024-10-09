@@ -1,20 +1,21 @@
 # ------------------------------------------------------------------------------
 # Generate charts - Interest
 
-source("scripts/charts/interest-amount-by-week-day-per-month.R")
-source("scripts/charts/interest-amount-by-week-day-per-year.R")
+source("scripts/charts/interest-cumulative-amount-by-week-day-per-month.R")
+source("scripts/charts/interest-cumulative-amount-by-week-day-per-year.R")
 
-source("scripts/charts/interest-by-day-ever.R")
-source("scripts/charts/interest-by-day-per-month.R")
-source("scripts/charts/interest-by-day-per-year.R")
-source("scripts/charts/interest-by-month-ever.R")
-source("scripts/charts/interest-by-week-ever.R")
-source("scripts/charts/interest-by-year-ever.R")
+source("scripts/charts/interest-cumulative-amount-by-day-ever.R")
+source("scripts/charts/interest-cumulative-amount-by-day-per-month.R")
+source("scripts/charts/interest-cumulative-amount-by-day-per-year.R")
+source("scripts/charts/interest-cumulative-amount-by-month-ever.R")
+source("scripts/charts/interest-cumulative-amount-by-week-ever.R")
+source("scripts/charts/interest-cumulative-amount-by-year-ever.R")
 
 source("scripts/charts/interest-count-by-week-day-per-month.R")
 source("scripts/charts/interest-count-by-week-day-per-year.R")
 
 source("scripts/charts/interest-daily-average-by-month-ever.R")
+source("scripts/charts/interest-daily-average-by-year-ever.R")
 
 source("scripts/charts/interest-total-over-time.R")
 
@@ -34,6 +35,20 @@ source("scripts/charts/investment-count-by-amount-ever.R")
 source("scripts/charts/investment-count-by-amount-per-year.R")
 #source("scripts/charts/investment-count-by-country-per-year.R")
 source("scripts/charts/investment-count-by-length-per-year.R")
+
+
+# ------------------------------------------------------------------------------
+# Generate charts - Principal
+
+source("scripts/charts/principal-cumulative-amount-by-day-ever.R")
+
+
+# ------------------------------------------------------------------------------
+# Generate charts - Total
+
+source("scripts/charts/total-with-interest.R")
+source("scripts/charts/total-with-principal.R")
+source("scripts/charts/total-with-uninvested.R")
 
 
 # ------------------------------------------------------------------------------

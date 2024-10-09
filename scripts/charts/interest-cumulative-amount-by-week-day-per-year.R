@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Interest amount by week days (per year)
+# Interest cumulative amount by week days (per year)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -17,10 +17,10 @@ pb_transactions |>
   geom_text(aes(label = interest_amount), vjust = -0.5, size = 3) +
   facet_wrap(~ year, ncol = 1) +
   labs(
-    title = "Interest amount by week days (per year)",
+    title = "Interest cumulative amount by week days (per year)",
     x = "Week day",
     y = "Interest count"
   )
 
 # Save
-ggsave("charts/interest-amount-by-week-day-per-year.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-cumulative-amount-by-week-day-per-year.png", width=30, height=20, units="cm", dpi=300)

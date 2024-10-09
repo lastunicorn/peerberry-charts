@@ -23,4 +23,4 @@ pb_transactions |>
   )
 
 # Save
-ggsave("charts/interest-by-year-ever.png", width=30, height=20, units="cm", dpi=300)
+ggsave("charts/interest-cumulative-amount-by-year-ever.png", width=30, height=20, units="cm", dpi=300)
