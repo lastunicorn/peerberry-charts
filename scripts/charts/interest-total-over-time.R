@@ -8,7 +8,7 @@ library(lubridate)
 pb_transactions |> 
   arrange(date) |> 
   mutate(
-    amount3 = ifelse(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST")), amount, 0),
+    amount3 = ifelse(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0),
     total_interest = map_dbl(date, ~ sum(amount3[date <= .x]))
   ) |>
   ggplot(aes(x = date)) +

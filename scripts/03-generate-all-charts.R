@@ -47,7 +47,7 @@ source("scripts/charts/principal-cumulative-amount-by-day-ever.R")
 # ------------------------------------------------------------------------------
 # Generate charts - Total
 
-source("scripts/charts/total-with-all.R")
+source("scripts/charts/total-with-interest-and-uninvested-by-date-ever.R")
 source("scripts/charts/total-with-interest.R")
 source("scripts/charts/total-with-principal.R")
 source("scripts/charts/total-with-uninvested.R")
