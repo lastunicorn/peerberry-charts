@@ -9,7 +9,7 @@ pb_transactions |>
   mutate(year = year(date)) |> 
   mutate(year = as.factor(year)) |> 
   ggplot(aes(x = date, y = amount, color = year)) +
-  geom_point(size = .75, position = "jitter")  +
+  geom_point(size = .7, position = "jitter")  +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(

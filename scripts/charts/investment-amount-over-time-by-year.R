@@ -11,7 +11,7 @@ pb_transactions |>
     date_without_year = make_date(2000, month(date), day(date))
   ) |> 
   ggplot(aes(x = date_without_year, y = amount)) +
-  geom_point(color = "#666", size = .75, position = "jitter") +
+  geom_point(color = "#666", size = .7, position = "jitter") +
   facet_wrap(~ year, ncol = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   labs(
