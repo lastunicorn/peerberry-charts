@@ -19,10 +19,10 @@ pb_transactions |>
     total_amount = first(total_amount)
   ) |>
   ggplot(aes(x = date)) +
-  geom_area(aes(y = total_amount), alpha = .5, fill = "#bada55") +
-  geom_step(aes(y = total_amount), direction = "hv", color = "darkgreen") +
-  geom_area(aes(y = uninvested_amount), alpha = .5) +
-  geom_step(aes(y = uninvested_amount), direction = "hv", alpha = .5, color = "black") +
+  geom_area(aes(y = total_amount), fill = "#D4E79E") +
+  geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +
+  geom_area(aes(y = uninvested_amount), fill = "gray60") +
+  geom_step(aes(y = uninvested_amount), direction = "hv", color = "gray20") +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
@@ -31,5 +31,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/total-amount-with-uninvested-amount-by-date.png", width=30, height=20, units="cm", dpi=300)
+save_plot("total-amount-with-uninvested-amount-by-date.png")

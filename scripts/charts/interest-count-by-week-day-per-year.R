@@ -22,5 +22,4 @@ pb_transactions |>
     y = "Interest count"
   )
 
-# Save
-ggsave("charts/interest-count-by-week-day-per-year.png", width=30, height=20, units="cm", dpi=300)
+save_plot("interest-count-by-week-day-per-year.png")

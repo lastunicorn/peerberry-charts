@@ -24,5 +24,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/interest-cumulative-amount-by-day-per-month.png", width=30, height=20, units="cm", dpi=300)
+save_plot("interest-cumulative-amount-by-day-per-month.png")

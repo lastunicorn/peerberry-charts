@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Interest by year (ever)
+# Interest cumulative amount by year (ever)
 
 pb_transactions |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -17,10 +17,9 @@ pb_transactions |>
   geom_col(width = .5) +
   geom_text(aes(label = interest_amount), vjust = -0.5, size = 3) +
   labs(
-    title = "Interest by year (ever)",
+    title = "Interest cumulative amount by year (ever)",
     x = "Year",
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/interest-cumulative-amount-by-year-ever.png", width=30, height=20, units="cm", dpi=300)
+save_plot("interest-cumulative-amount-by-year-ever.png")

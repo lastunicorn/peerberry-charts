@@ -35,6 +35,7 @@ source("scripts/charts/investment-count-by-amount-ever.R")
 source("scripts/charts/investment-count-by-amount-per-year.R")
 #source("scripts/charts/investment-count-by-country-per-year.R")
 source("scripts/charts/investment-count-by-length-per-year.R")
+source("scripts/charts/investment-count-by-length-per-country-2024.R")
 
 
 # ------------------------------------------------------------------------------
@@ -46,6 +47,7 @@ source("scripts/charts/principal-cumulative-amount-by-day-ever.R")
 # ------------------------------------------------------------------------------
 # Generate charts - Total
 
+source("scripts/charts/total-with-all.R")
 source("scripts/charts/total-with-interest.R")
 source("scripts/charts/total-with-principal.R")
 source("scripts/charts/total-with-uninvested.R")

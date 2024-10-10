@@ -23,5 +23,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/investment-amount-by-country-per-year.png", width=30, height=20, units="cm", dpi=300)
+save_plot("investment-amount-by-country-per-year.png")

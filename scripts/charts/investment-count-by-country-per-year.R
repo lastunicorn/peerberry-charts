@@ -2,8 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# One chart per year:
-#   - Display investments count in each country.
+# nvestment count in each country (per year)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
@@ -20,5 +19,4 @@ pb_transactions |>
     y = "Count"
   )
 
-# Save
-ggsave("charts/investment-count-by-country-per-year.png", width=30, height=20, units="cm", dpi=300)
+save_plot("investment-count-by-country-per-year.png")

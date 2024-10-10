@@ -21,12 +21,11 @@ pb_transactions |>
   ggplot(aes(x = month, y = sum)) +
   geom_col() +
   facet_wrap(~ country) +
+  scale_x_discrete(limits = sapply(1:12, toString)) +
   labs(
-    title = "Investments amount by month in 2024 (per country)",
+    title = "Investment amount by month in 2024 (per country)",
     x = "Purchease month",
     y = "Amount (€)"
-  ) +
-  scale_x_discrete(limits = sapply(1:12, toString))
+  )
 
-# Save
-ggsave("charts/investment-amount-by-month-per-country-2024.png", width=30, height=20, units="cm", dpi=300)
+save_plot("investment-amount-by-month-per-country-2024.png")

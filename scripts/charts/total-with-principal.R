@@ -12,8 +12,8 @@ pb_transactions |>
     total_amount = map_dbl(date, ~ sum(amount3[date <= .x])),
   ) |>
   ggplot(aes(x = date)) +
-  geom_area(aes(y = total_amount), alpha = .5, fill = "#bada55") +
-  geom_step(aes(y = total_amount), direction = "hv", color = "darkgreen") +
+  geom_area(aes(y = total_amount), fill = "#D4E79E") +
+  geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +
   geom_col(aes(y = amount2)) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
@@ -23,5 +23,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/total-amount-with-principal-by-date.png", width=30, height=20, units="cm", dpi=300)
+save_plot("total-amount-with-principal-by-date.png")

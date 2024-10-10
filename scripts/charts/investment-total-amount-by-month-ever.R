@@ -21,10 +21,9 @@ pb_transactions |>
   geom_col() +
   facet_grid(country ~ year) +
   labs(
-    title = "Investments amount by month (per year and country)",
+    title = "Investment amount by month (per year and country)",
     x = "Purchease month",
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/investment-amount-by-month-per-country-ever.png", width=20, height=60, units="cm", dpi=300)
+save_plot("investment-amount-by-month-per-country-ever.png", width=20, height=60)

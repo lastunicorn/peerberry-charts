@@ -23,5 +23,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-# Save
-ggsave("charts/interest-daily-average-by-year-ever.png", width=30, height=20, units="cm", dpi=300)
+save_plot("interest-daily-average-by-year-ever.png")

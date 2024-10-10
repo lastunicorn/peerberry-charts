@@ -22,6 +22,4 @@ pb_transactions |>
     y = "Interest count"
   )
 
-# Save
-ensure_dir(pb.charts_dir)
-ggsave(file.path(pb.charts_dir, "interest-cumulative-amount-by-week-day-per-month.png"), width=30, height=20, units="cm", dpi=300)
+save_plot("interest-cumulative-amount-by-week-day-per-month.png")

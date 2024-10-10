@@ -20,5 +20,4 @@ pb_transactions |>
     y = "Investment size (€)"
   )
 
-# Save
-ggsave("charts/investment-amount-over-time-by-year.png", width=30, height=20, units="cm", dpi=300)
+save_plot("investment-amount-over-time-by-year.png")
