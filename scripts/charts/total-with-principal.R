@@ -11,6 +11,12 @@ pb_transactions |>
     amount3 = ifelse(is.element(type, c("DEPOSIT", "BUYBACK_INTEREST", "REPAYMENT_INTEREST")), amount, 0),
     total_amount = map_dbl(date, ~ sum(amount3[date <= .x])),
   ) |>
+  uncount(2) |> 
+  mutate(
+    total_amount = lag(total_amount),
+    amount2 = amount2 / 2 # a trick to avoid displaying the value two times bigger for that day
+  ) |> 
+  filter(!is.na(total_amount)) |> 
   ggplot(aes(x = date)) +
   geom_area(aes(y = total_amount), fill = "#D4E79E") +
   geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +

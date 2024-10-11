@@ -20,6 +20,11 @@ pb_transactions |>
     date_without_year = first(date_without_year),
     uninvested_amount = first(uninvested_amount)
   ) |>
+  uncount(2) |> 
+  mutate(
+    uninvested_amount = lag(uninvested_amount)
+  ) |> 
+  filter(!is.na(uninvested_amount)) |> 
   ggplot(aes(x = date_without_year, y = uninvested_amount)) +
   geom_area(fill = "gray60") +
   geom_step(direction = "hv", color = "gray20") +

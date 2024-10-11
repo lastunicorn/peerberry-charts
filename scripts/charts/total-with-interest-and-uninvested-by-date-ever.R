@@ -17,6 +17,13 @@ pb_transactions |>
     amount_total_without_interest = cumsum(amount_deposit),
     amount_total_uninvested = cumsum(amount_uninvested)
   ) |> 
+  uncount(2) |> 
+  mutate(
+    amount_total = lag(amount_total),
+    amount_total_without_interest = lag(amount_total_without_interest),
+    amount_total_uninvested = lag(amount_total_uninvested)
+  ) |> 
+  filter(!is.na(amount_total) & !is.na(amount_total_without_interest) & !is.na(amount_total_uninvested)) |> 
   ggplot(aes(x = date)) +
   geom_area(aes(y = amount_total), fill = "#38D44B") +
   geom_step(aes(y = amount_total), direction = "hv", color = "#009412") +

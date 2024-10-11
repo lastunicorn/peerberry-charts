@@ -15,9 +15,14 @@ pb_transactions |>
   summarize(
     uninvested_amount = first(uninvested_amount)
   ) |>
+  uncount(2) |> 
+  mutate(
+    uninvested_amount = lag(uninvested_amount)
+  ) |> 
+  filter(!is.na(uninvested_amount)) |> 
   ggplot(aes(x = date, y = uninvested_amount)) +
   geom_area(fill = "gray60") +
-  geom_step(direction = "hv", color = "gray20") +
+  geom_path() +
   geom_smooth(method = 'loess', formula = 'y ~ x') +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
