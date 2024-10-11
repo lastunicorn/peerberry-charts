@@ -25,7 +25,8 @@ source("scripts/charts/interest-total-over-time.R")
 
 source("scripts/charts/investment-total-amount-by-country-per-year.R")
 source("scripts/charts/investment-total-amount-by-month-ever.R")
-source("scripts/charts/investment-total-amount-by-month-2024.R")
+source("scripts/charts/investment-total-amount-by-month-per-current-year.R")
+source("scripts/charts/investment-total-amount-by-month-per-last-12-years.R")
 source("scripts/charts/investment-total-amount-by-year-per-country.R")
 
 source("scripts/charts/investment-amount-over-time-by-year.R")

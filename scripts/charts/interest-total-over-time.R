@@ -11,6 +11,11 @@ pb_transactions |>
     amount3 = ifelse(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0),
     total_interest = map_dbl(date, ~ sum(amount3[date <= .x]))
   ) |>
+  uncount(2) |> 
+  mutate(
+    total_interest = lag(total_interest)
+  ) |> 
+  filter(!is.na(total_interest)) |> 
   ggplot(aes(x = date)) +
   geom_area(aes(y = total_interest), alpha = .5) +
   geom_step(aes(y = total_interest), direction = "hv", alpha = .5, color = "black") +

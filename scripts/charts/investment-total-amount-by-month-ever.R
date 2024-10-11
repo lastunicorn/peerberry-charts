@@ -2,8 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# One chart per country and year:
-#   - Display invested amount of money by month.
+# Invested amount of money by month (per year and country)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
@@ -22,8 +21,8 @@ pb_transactions |>
   facet_grid(country ~ year) +
   labs(
     title = "Investment amount by month (per year and country)",
-    x = "Purchease month",
+    x = "Purchase month",
     y = "Amount (€)"
   )
 
-save_plot("investment-amount-by-month-per-country-ever.png", width=20, height=60)
+save_plot("investment-amount-by-month-per-country-ever.png", width = 20, height = 60)
