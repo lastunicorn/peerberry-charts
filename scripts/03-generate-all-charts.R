@@ -38,6 +38,8 @@ source("scripts/charts/investment-count-by-amount-per-year.R")
 source("scripts/charts/investment-count-by-length-per-year.R")
 source("scripts/charts/investment-count-by-length-per-country-2024.R")
 
+source("scripts/charts/investment-late.R")
+
 
 # ------------------------------------------------------------------------------
 # Generate charts - Principal
