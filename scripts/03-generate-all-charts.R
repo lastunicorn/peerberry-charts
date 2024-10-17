@@ -63,3 +63,9 @@ source("scripts/charts/uninvested-by-day-ever.R")
 source("scripts/charts/uninvested-by-day-per-year.R")
 source("scripts/charts/uninvested-by-month-ever.R")
 
+
+# ------------------------------------------------------------------------------
+# Generate charts - ROI
+
+source("scripts/charts/roi-by-month-ever.R")
+source("scripts/charts/roi-by-year-ever.R")
