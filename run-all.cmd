@@ -1,0 +1,1 @@
+rscript "scripts/run-all.R"

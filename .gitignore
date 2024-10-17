@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 
-/data
-/data-raw
-/charts
+/data/
+/data-raw/
+/charts/
