@@ -5,32 +5,6 @@ library(tidyverse)
 # ------------------------------------------------------------------------------
 # Import transactions
 
-
-# # Import 2023
-# pb_transactions <- read_xlsx("data-raw/transactions - 2023.xlsx") |> 
-#   select(c(1, 2, 3, 4, 7, 8)) |> 
-#   janitor::clean_names() |> 
-#   mutate(
-#     date = as.Date(date),
-#     type = as.factor(type), 
-#     loan_status = as.factor(loan_status)
-#   )
-# 
-# # Import 2024
-# pb_transactions <- read_xlsx("data-raw/transactions - 2024.xlsx") |> 
-#   select(c(1, 2, 3, 4, 7, 8)) |> 
-#   janitor::clean_names() |> 
-#   mutate(
-#     date = as.Date(date),
-#     type = as.factor(type),
-#     loan_status = as.factor(loan_status)
-#   ) |> 
-#   rbind(pb_transactions)
-
-
-# ------------------------------------------------------------------------------
-# Import transactions
-
 pb_transactions <- read_and_merge_excels(c(
   "data-raw/transactions - 2023.xlsx",
   "data-raw/transactions - 2024.xlsx"

@@ -4,7 +4,7 @@ library(tidyverse)
 # ------------------------------------------------------------------------------
 # Investment count by length (days) in 2024 (per country).
 
-temp <- pb |> 
+temp <- pb_loans |> 
   mutate(
     estimated_days = as.integer(estimated_final_payment_date - date_of_purchase),
     purchese_year = year(date_of_purchase)

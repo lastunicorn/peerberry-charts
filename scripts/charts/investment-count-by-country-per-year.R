@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# nvestment count in each country (per year)
+# Investment count in each country (per year)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
