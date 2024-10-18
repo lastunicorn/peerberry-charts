@@ -23,7 +23,7 @@ pb_transactions |>
     amount_total_without_interest = lag(amount_total_without_interest),
     amount_total_uninvested = lag(amount_total_uninvested)
   ) |> 
-  filter(!is.na(amount_total) & !is.na(amount_total_without_interest) & !is.na(amount_total_uninvested)) |> 
+  slice_tail(n = -1) |> 
   ggplot(aes(x = date)) +
   geom_area(aes(y = amount_total), fill = "#38D44B") +
   geom_step(aes(y = amount_total), direction = "hv", color = "#009412") +

@@ -17,7 +17,7 @@ pb_transactions |>
     total_interest = lag(total_interest),
     total_amount = lag(total_amount)
   ) |> 
-  filter(!is.na(total_interest) & !is.na(total_amount)) |> 
+  slice_tail(n = -1) |> 
   ggplot(aes(x = date)) +
   geom_area(aes(y = total_amount), fill = "#D4E79E") +
   geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +

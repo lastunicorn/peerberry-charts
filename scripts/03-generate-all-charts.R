@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Generate charts - Interest
+# Interest
 
 source("scripts/charts/interest-cumulative-amount-by-week-day-per-month.R")
 source("scripts/charts/interest-cumulative-amount-by-week-day-per-year.R")
@@ -21,7 +21,7 @@ source("scripts/charts/interest-total-over-time.R")
 
 
 # ------------------------------------------------------------------------------
-# Generate charts - Investment
+# Investment
 
 source("scripts/charts/investment-total-amount-by-country-per-year.R")
 source("scripts/charts/investment-total-amount-by-month-ever.R")
@@ -38,18 +38,21 @@ source("scripts/charts/investment-count-by-amount-per-year.R")
 source("scripts/charts/investment-count-by-length-per-year.R")
 source("scripts/charts/investment-count-by-length-per-country-2024.R")
 
+source("scripts/charts/investment-active.R")
+source("scripts/charts/investment-late-by-latetime-per-country-ever.R")
 source("scripts/charts/investment-late.R")
 
 
 # ------------------------------------------------------------------------------
-# Generate charts - Principal
+# Principal
 
 source("scripts/charts/principal-cumulative-amount-by-day-ever.R")
 
 
 # ------------------------------------------------------------------------------
-# Generate charts - Total
+# Total
 
+source("scripts/charts/total.R")
 source("scripts/charts/total-with-interest-and-uninvested-by-date-ever.R")
 source("scripts/charts/total-with-interest.R")
 source("scripts/charts/total-with-principal.R")
@@ -57,7 +60,7 @@ source("scripts/charts/total-with-uninvested.R")
 
 
 # ------------------------------------------------------------------------------
-# Generate charts - Uninvested (cash drag)
+# Uninvested (cash drag)
 
 source("scripts/charts/uninvested-by-day-ever.R")
 source("scripts/charts/uninvested-by-day-per-year.R")
