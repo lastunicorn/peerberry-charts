@@ -44,7 +44,7 @@ pb_transactions |>
   labs(
     title = "Net annualized return (including cash drag) by month",
     x = "Month",
-    y = "ROI (%)"
+    y = "ROI (% p.a.)"
   )
 
 save_plot("roi-by-month-ever.png")

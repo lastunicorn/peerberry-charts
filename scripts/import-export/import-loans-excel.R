@@ -66,6 +66,7 @@ pb_loans <- read_xlsx("data-raw/investments - current.xlsx") |>
     date_of_purchase = as.Date(date_of_purchase),
     loan_type = as.factor(loan_type),
     estimated_final_payment_date = as.Date(estimated_final_payment_date),
+    last_payment_date = as.Date(last_payment_date),
     status = as.factor(status)
   ) |> 
   rbind(pb_loans)

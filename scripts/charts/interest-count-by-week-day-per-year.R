@@ -11,7 +11,10 @@ pb_transactions |>
     week_day = wday(date, label = TRUE)
   ) |> 
   group_by(year, week_day) |> 
-  summarize(count = n()) |> 
+  summarize(
+    count = n(),
+    .groups = "drop_last"
+  ) |> 
   ggplot(aes(x = week_day, y = count)) +
   geom_col(width = .75) +
   geom_text(aes(label = count), vjust = -0.5, size = 3) +
