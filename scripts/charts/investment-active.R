@@ -14,7 +14,7 @@ pb_loans |>
   geom_text(aes(label = total_amount), size = 3, position = position_stack(vjust = .5), color = "white") +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = paste("Investment amount active by country (", today(), ")", sep = ""),
+    title = "Investment amount active by country",
     x = "Country",
     y = "Amount (€)",
     fill = "Status"
