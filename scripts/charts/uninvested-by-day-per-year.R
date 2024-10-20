@@ -27,7 +27,7 @@ pb_transactions |>
   filter(!is.na(uninvested_amount)) |> 
   ggplot(aes(x = date_without_year, y = uninvested_amount)) +
   geom_area(fill = "gray60") +
-  geom_step(direction = "hv", color = "gray20") +
+  geom_line(color = "gray20") +
   geom_smooth(method = 'loess', formula = 'y ~ x') +
   facet_wrap(~ year, ncol = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +

@@ -19,7 +19,7 @@ pb_transactions |>
   mutate(
     uninvested_amount = lag(uninvested_amount)
   ) |> 
-  filter(!is.na(uninvested_amount)) |> 
+  slice_tail(n = -1) |> 
   ggplot(aes(x = date, y = uninvested_amount)) +
   geom_area(fill = "gray60") +
   geom_path() +

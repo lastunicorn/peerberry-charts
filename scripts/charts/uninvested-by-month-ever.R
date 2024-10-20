@@ -11,13 +11,17 @@ pb_transactions |>
     uninvested_amount = map_dbl(date, ~ sum(amount_with_sign[date <= .x]))
   ) |> 
   group_by(date) |> 
-  summarize(uninvested_amount = first(uninvested_amount)) |> 
+  summarize(
+    uninvested_amount = first(uninvested_amount)
+  ) |> 
   mutate(
     month_as_date = floor_date(date, "month"),
     days_in_month = lubridate::days_in_month(date)
   ) |> 
   group_by(month_as_date) |>
-  summarize(uninvested_amount = sum(uninvested_amount) / first(days_in_month)) |> 
+  summarize(
+    uninvested_amount = sum(uninvested_amount) / first(days_in_month)
+  ) |> 
   ggplot(aes(x = month_as_date, y = uninvested_amount)) +
   geom_col() +
   geom_text(aes(label = format(round(uninvested_amount, 2), nsmall = 2)), vjust = -0.5, size = 3) +
