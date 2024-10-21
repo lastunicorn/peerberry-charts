@@ -58,12 +58,48 @@ convert_to_factor <- function(data, column, allowed_levels) {
   return(data)
 }
 
+# ------------------------------------------------------------------------------
+
 ensure_dir <- function(path) {
   ifelse(dir.exists(path), FALSE, dir.create(path))
 }
+
+# ------------------------------------------------------------------------------
 
 save_plot <- function(name, width = 30, height = 20) {
   ensure_dir(pb.charts_dir)
   filePath <- file.path(pb.charts_dir, name)
   ggsave(filePath, width = width, height = height, units="cm", dpi=300)
+}
+
+# ------------------------------------------------------------------------------
+
+add_start_end_dates <- function(data) {
+  fake_rows <- pb_transactions |> 
+    mutate(
+      year = year(date)
+    ) |>
+    group_by(year) |> 
+    reframe(
+      date = c(make_date(min(year), 1, 1), make_date(max(year), 12, 31)),
+      amount = c(0, 0)
+    )
+  
+  return (bind_rows(data, fake_rows))
+}
+
+# ------------------------------------------------------------------------------
+
+add_year_start_end_dates <- function(data) {
+  fake_rows <- pb_transactions |> 
+    mutate(
+      year = year(date)
+    ) |>
+    group_by(year) |> 
+    reframe(
+      date = c(make_date(unique(year), 1, 1), make_date(unique(year), 12, 31)),
+      amount = c(0, 0)
+    )
+  
+  return (bind_rows(data, fake_rows))
 }
