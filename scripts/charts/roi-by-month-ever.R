@@ -18,7 +18,7 @@ pb_transactions |>
   arrange(date) |> 
   mutate(
     start_date = min(date),
-    end_date = max(date),
+    end_date = max(date) + days(1),
     month = month(date),
     month_as_date = floor_date(date, "month"),
     roi_percentage = if_else(is.na(lag(funds)), 0, interest * 100 / lag(funds)),

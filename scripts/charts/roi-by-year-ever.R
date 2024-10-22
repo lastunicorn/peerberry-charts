@@ -19,7 +19,7 @@ pb_transactions |>
   mutate(
     year = as.factor(year(date)),
     start_date = min(date),
-    end_date = max(date),
+    end_date = max(date) + days(1),
     roi_percentage = if_else(is.na(lag(funds)), 0, interest * 100 / lag(funds)),
     investment_days = if_else(is.na(lag(date)), 0, as.numeric(date - lag(date))),
     roi_percentage_pa = if_else(investment_days == 0, 0, roi_percentage * 365 / investment_days)
