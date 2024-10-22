@@ -23,4 +23,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("interest-cumulative-amount-by-month-ever.png")
+save_plot("interest-cumulative-amount-20-by-month-ever.png")

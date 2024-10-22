@@ -25,4 +25,4 @@ pb_transactions |>
     y = "Interest count"
   )
 
-save_plot("interest-count-by-week-day-per-year.png")
+save_plot("interest-count-02-by-week-day-per-year.png")
