@@ -5,26 +5,23 @@ library(tidyverse)
 # Interest daily average by month (per year)
 
 pb_transactions |>
-  mutate(
-    start_date = min(date),
-    end_date = max(date) + days(1)
-  ) |> 
   filter(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST")) |>
   mutate(
     month_as_date = floor_date(date, "month")
   ) |>
   add_row(
-    month_as_date = generate_monthly_dates(floor_date(start_date, "year"), ceiling_date(end_date, "year") - months(1)),
+    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11)),
     amount = 0
   ) |>
   group_by(month_as_date) |>
   arrange(date) |>
   mutate(
-    month_start_date = floor_date(date, "month"),
-    month_start_date = if_else(month_start_date < start_date, start_date, month_start_date),
-    month_end_date = ceiling_date(date, "month"),
-    month_end_date = if_else(month_end_date > end_date, end_date, month_end_date),
-    days_in_month = (month_start_date %--% month_end_date) / days(1)
+    month_first_date = floor_date(date, "month"),
+    month_first_date = if_else(month_first_date < pb_transactions.first_date, pb_transactions.first_date, month_first_date),
+    month_last_date = ceiling_date(date, "month") - days(1),
+    month_last_date = if_else(month_last_date > pb_transactions.last_date, pb_transactions.last_date, month_last_date),
+    month_interval = month_first_date %--% (month_last_date + days(1)),
+    days_in_month = month_interval / days(1)
   ) |> 
   summarize(
     interest_amount = sum(amount) / first(days_in_month),
