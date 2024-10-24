@@ -14,7 +14,7 @@ pb_transactions |>
   ) |>
   ggplot(aes(x = date)) +
   geom_col(aes(y = interest_amount)) +
-  geom_smooth(aes(y = interest_amount), method = 'loess', formula = 'y ~ x') +
+  #geom_smooth(aes(y = interest_amount), method = 'loess', formula = 'y ~ x') +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(

@@ -16,7 +16,7 @@ pb_transactions |>
   ) |> 
   mutate(
     month_as_date = floor_date(date, "month"),
-    days_in_month = lubridate::days_in_month(date)
+    days_in_month = lubridate::days_in_month(month_as_date)
   ) |> 
   group_by(month_as_date) |>
   summarize(

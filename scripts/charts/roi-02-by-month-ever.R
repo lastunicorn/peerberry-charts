@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ROI - Net annualized return by month - ever
+# ROI - Net annualized return % by month - ever
 
 pb_transactions |> 
   mutate(
@@ -19,7 +19,6 @@ pb_transactions |>
   mutate(
     start_date = min(date),
     end_date = max(date) + days(1),
-    month = month(date),
     month_as_date = floor_date(date, "month"),
     roi_percentage = if_else(is.na(lag(funds)), 0, interest * 100 / lag(funds)),
     investment_days = if_else(is.na(lag(date)), 0, as.numeric(date - lag(date))),
@@ -42,9 +41,9 @@ pb_transactions |>
   guides(x = guide_axis(angle = 70)) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   labs(
-    title = "Net annualized return (including cash drag) by month",
+    title = "Net annualized return % (including cash drag) by month",
     x = "Month",
     y = "ROI (% p.a.)"
   )
 
-save_plot("roi-by-month-ever.png")
+save_plot("roi-02-by-month-ever.png")

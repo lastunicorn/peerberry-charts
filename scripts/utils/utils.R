@@ -103,3 +103,18 @@ add_year_start_end_dates <- function(data) {
   
   return (bind_rows(data, fake_rows))
 }
+
+# ------------------------------------------------------------------------------
+
+generate_monthly_dates <- function(start_date, end_date) {
+  start_date <- as.Date(start_date)
+  end_date <- as.Date(end_date)
+  
+  monthly_dates <- seq(
+    from = floor_date(start_date, "month"), 
+    to = floor_date(end_date, "month"), 
+    by = "month"
+  )
+  
+  return(monthly_dates)
+}
