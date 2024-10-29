@@ -110,11 +110,47 @@ generate_monthly_dates <- function(start_date, end_date) {
   start_date <- as.Date(start_date)
   end_date <- as.Date(end_date)
   
-  monthly_dates <- seq(
+  dates <- seq(
     from = floor_date(start_date, "month"), 
     to = floor_date(end_date, "month"), 
     by = "month"
   )
   
-  return(monthly_dates)
+  return(dates)
+}
+
+# ------------------------------------------------------------------------------
+
+generate_weekly_dates <- function(start_date, end_date) {
+  start_date <- as.Date(start_date)
+  end_date <- as.Date(end_date)
+  
+  dates <- seq(
+    from = floor_date(start_date, "week"), 
+    to = floor_date(end_date, "week"), 
+    by = "week"
+  )
+  
+  return(dates)
+}
+
+# ------------------------------------------------------------------------------
+
+last_month_of_year <- function (date) {
+  date <- as.Date(date)
+  
+  month_as_date <- floor_date(date, "month") + months(11)
+  
+  return (month_as_date)
+}
+
+# ------------------------------------------------------------------------------
+
+last_week_of_year <- function (date) {
+  date <- as.Date(date)
+  
+  week_as_date <- ceiling_date(date, "year") - days(1)
+  week_as_date <- floor_date(week_as_date, "week")
+  
+  return (week_as_date)
 }

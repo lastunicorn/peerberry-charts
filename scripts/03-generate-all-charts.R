@@ -1,14 +1,16 @@
 # ------------------------------------------------------------------------------
 # Interest
 
-source("scripts/charts/interest-count-01-by-week-day-per-month.R")
-source("scripts/charts/interest-count-02-by-week-day-per-year.R")
+#source("scripts/charts/interest-count-01-by-week-day-per-month.R")
+#source("scripts/charts/interest-count-02-by-week-day-per-year.R")
 
-source("scripts/charts/interest-cumulative-amount-01-by-day-ever.R")
-source("scripts/charts/interest-cumulative-amount-02-by-day-per-year.R")
-source("scripts/charts/interest-cumulative-amount-03-by-day-per-month.R")
-source("scripts/charts/interest-cumulative-amount-10-by-week-ever.R")
-source("scripts/charts/interest-cumulative-amount-20-by-month-ever.R")
+#source("scripts/charts/interest-cumulative-amount-01-by-day-ever.R")
+source("scripts/charts/interest-cumulative-amount-02-by-day-per-month.R")
+source("scripts/charts/interest-cumulative-amount-03-by-day-per-year.R")
+#source("scripts/charts/interest-cumulative-amount-10-by-week-ever.R")
+source("scripts/charts/interest-cumulative-amount-11-by-week-per-year.R")
+#source("scripts/charts/interest-cumulative-amount-20-by-month-ever.R")
+source("scripts/charts/interest-cumulative-amount-21-by-month-by-year.R")
 source("scripts/charts/interest-cumulative-amount-30-by-year-ever.R")
 source("scripts/charts/interest-cumulative-amount-40-by-week-day-per-month.R")
 source("scripts/charts/interest-cumulative-amount-41-by-week-day-per-year.R")

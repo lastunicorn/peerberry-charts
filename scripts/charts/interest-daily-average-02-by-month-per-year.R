@@ -10,7 +10,7 @@ pb_transactions |>
     month_as_date = floor_date(date, "month")
   ) |>
   add_row(
-    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11)),
+    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date |> last_month_of_year()),
     amount = 0
   ) |>
   group_by(month_as_date) |>
