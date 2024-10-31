@@ -23,10 +23,11 @@ pb_transactions |>
   geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
+  scale_y_continuous(n.breaks = 20) +
   labs(
     title = "Total amount (ever)",
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("total-amount-ever.png")
+save_plot("total-01-amount-ever.png")

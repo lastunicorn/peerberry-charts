@@ -11,7 +11,8 @@ pb_loans |>
   group_by(year, late_days) |> 
   ggplot(aes(x = late_days, fill = year)) +
   geom_bar(position = "dodge", width = .5) +
-  facet_wrap(~ country) +
+  facet_wrap(~ country, ncol = 3) +
+  scale_x_continuous(n.breaks = 20) +
   labs(
     title = "Investment late by late-time per country (all years)",
     x = "Late days",
@@ -19,4 +20,4 @@ pb_loans |>
     fill = "Year"
   )
 
-save_plot("investment-late-by-latetime-per-country.png", height = 20, width = 60)
+save_plot("investment-late-by-latetime-per-country.png")

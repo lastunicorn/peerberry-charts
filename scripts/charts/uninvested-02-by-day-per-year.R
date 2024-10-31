@@ -3,8 +3,7 @@ library(purrr)
 
 
 # ------------------------------------------------------------------------------
-# For each year:
-#   - Uninvested amount by date
+# Uninvested amount by day (per year)
 
 pb_transactions |> 
   arrange(date) |> 
@@ -30,10 +29,11 @@ pb_transactions |>
   geom_line(color = "gray20") +
   facet_wrap(~ year, ncol = 1) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   labs(
-    title = "Cash drag (uninvested amount) (per year)",
+    title = "Cash drag (uninvested amount) by day (per year)",
     x = "Date",
-    y = "Amount (€)"
+    y = "Cash Drag (€)"
   )
 
-save_plot("uninvested-amount-by-date-per-year.png")
+save_plot("uninvested-02-amount-by-day-per-year.png")

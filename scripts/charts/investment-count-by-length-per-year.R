@@ -15,6 +15,8 @@ temp |>
   geom_bar() +
   facet_wrap(~ purchese_year, ncol = 1) +
   scale_x_continuous(breaks = round(seq(0, max(temp$estimated_days), by = 2), 1)) +
+  scale_y_continuous(n.breaks = 15, minor_breaks = F) +
+  expand_limits(x = 0) +
   labs(
     title = "Investment count by length in days (per year)",
     x = "Days",

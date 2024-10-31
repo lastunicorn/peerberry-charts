@@ -32,6 +32,7 @@ pb_transactions |>
   geom_area(aes(y = amount_total_uninvested), fill = "gray60") +
   geom_step(aes(y = amount_total_uninvested), direction = "hv", color = "gray20") +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Total amount with interest and uninvested by date (ever)",
@@ -39,4 +40,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("total-with-interest-and-uninvested-by-date-ever.png")
+save_plot("total-02-with-interest-and-uninvested-by-date-ever.png")

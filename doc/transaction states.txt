@@ -1,0 +1,15 @@
+"DEPOSIT"
+	+ uninvested
+
+"INVESTMENT"
+	- uninvested
+	+ invested
+
+"BUYBACK_PRINCIPAL"
+"REPAYMENT_PRINCIPAL"
+	+ uninvested
+	- invested
+
++ "BUYBACK_INTEREST"
++ "REPAYMENT_INTEREST"
+	+ uninvested

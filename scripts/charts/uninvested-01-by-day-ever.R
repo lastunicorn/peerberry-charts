@@ -3,7 +3,7 @@ library(purrr)
 
 
 # ------------------------------------------------------------------------------
-# Uninvested amount by date
+# Uninvested amount by day (ever)
 
 pb_transactions |> 
   arrange(date) |> 
@@ -26,9 +26,9 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag (uninvested amount) (ever)",
+    title = "Cash drag (uninvested amount) by day (ever)",
     x = "Date",
-    y = "Uninvested amount"
+    y = "Cash Drag (€)"
   )
 
-save_plot("uninvested-amount-by-date.png")
+save_plot("uninvested-01-amount-by-day-ever.png")

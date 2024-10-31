@@ -1,18 +1,15 @@
-library(dplyr)
-
-
 # ------------------------------------------------------------------------------
 # Uninvested amount by month (ever)
 
 pb_transactions |> 
   arrange(date) |> 
   mutate(
-    amount_with_sign = ifelse(type == "INVESTMENT", -amount, amount),
-    uninvested_amount = map_dbl(date, ~ sum(amount_with_sign[date <= .x]))
+    amount_with_sign = if_else(type == "INVESTMENT", -amount, amount),
+    uninvested_amount = cumsum(amount_with_sign)
   ) |> 
   group_by(date) |> 
   summarize(
-    uninvested_amount = first(uninvested_amount)
+    uninvested_amount = last(uninvested_amount)
   ) |> 
   mutate(
     month_as_date = floor_date(date, "month"),
@@ -26,11 +23,12 @@ pb_transactions |>
   geom_col() +
   geom_text(aes(label = format(round(uninvested_amount, 2), nsmall = 2)), vjust = -0.5, size = 3) +
   guides(x = guide_axis(angle = 60)) +
+  scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   labs(
-    title = "Cash drag average (uninvested amount) by month (ever)",
+    title = "Cash drag (uninvested amount) average by month (ever)",
     x = "Month",
-    y = "Amount (€)"
+    y = "Cash Drag (€)"
   )
 
-save_plot("uninvested-amount-by-month-ever.png")
+save_plot("uninvested-03-amount-by-month-ever.png")

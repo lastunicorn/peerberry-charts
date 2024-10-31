@@ -20,6 +20,7 @@ pb_transactions |>
   geom_area(aes(y = total_interest), alpha = .7) +
   geom_step(aes(y = total_interest), direction = "hv", alpha = .5, color = "black") +
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Total interest (ever)",

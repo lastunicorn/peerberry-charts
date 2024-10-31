@@ -64,8 +64,8 @@ source("scripts/charts/roi-04-by-year-ever.R")
 # ------------------------------------------------------------------------------
 # Total
 
-source("scripts/charts/total.R")
-source("scripts/charts/total-with-interest-and-uninvested-by-date-ever.R")
+source("scripts/charts/total-01.R")
+source("scripts/charts/total-02-with-interest-and-uninvested-by-date-ever.R")
 #source("scripts/charts/total-with-interest.R")
 #source("scripts/charts/total-with-principal.R")
 #source("scripts/charts/total-with-uninvested.R")
@@ -74,6 +74,7 @@ source("scripts/charts/total-with-interest-and-uninvested-by-date-ever.R")
 # ------------------------------------------------------------------------------
 # Uninvested (cash drag)
 
-#source("scripts/charts/uninvested-by-day-ever.R")
-source("scripts/charts/uninvested-by-day-per-year.R")
-source("scripts/charts/uninvested-by-month-ever.R")
+#source("scripts/charts/uninvested-01-by-day-ever.R")
+source("scripts/charts/uninvested-02-by-day-per-year.R")
+source("scripts/charts/uninvested-03-by-month-ever.R")
+source("scripts/charts/uninvested-04-percentage-by-month-ever.R")

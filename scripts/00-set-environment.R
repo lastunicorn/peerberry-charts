@@ -31,4 +31,4 @@ source("scripts/utils/utils.R")
 
 pb.import_dir <- "data-raw"
 pb.data_dir <- "data"
-pb.charts_dir <- "charts"
+pb.output_dir <- "output"

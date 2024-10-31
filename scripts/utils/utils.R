@@ -67,9 +67,9 @@ ensure_dir <- function(path) {
 # ------------------------------------------------------------------------------
 
 save_plot <- function(name, width = 30, height = 20) {
-  ensure_dir(pb.charts_dir)
-  filePath <- file.path(pb.charts_dir, name)
-  ggsave(filePath, width = width, height = height, units="cm", dpi=300)
+  ensure_dir(pb.output_dir)
+  filePath <- file.path(pb.output_dir, name)
+  ggsave(filePath, width = width, height = height, units = "cm", dpi = 300)
 }
 
 # ------------------------------------------------------------------------------
