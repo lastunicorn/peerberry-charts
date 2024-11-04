@@ -3,9 +3,10 @@ library(lubridate)
 
 
 # ------------------------------------------------------------------------------
-# Interest cumulative amount daily (per month)
+# Interest cumulative amount daily (per month) - last 12 months
 
 pb_transactions |> 
+  filter(date >= pb_transactions.last_month_as_date - months(11)) |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
   group_by(date) |>
   arrange(date) |> 
@@ -18,8 +19,9 @@ pb_transactions |>
   ggplot(aes(x = day)) +
   geom_col(aes(y = interest_amount)) +
   facet_wrap(~ month, labeller = as_labeller(month_year_labeller)) +
+  scale_x_continuous(n.breaks = 5) +
   labs(
-    title = "Interest cumulative amount by day (per month)",
+    title = "Interest cumulative amount by day (per month) - 12 months",
     x = "Date",
     y = "Amount (€)"
   )

@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Interest cumulative amount by month (ever)
+# Interest cumulative amount by month (per year)
 
 pb_transactions |>
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
@@ -26,7 +26,7 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   scale_y_continuous(n.breaks = 15, minor_breaks = F) +
   labs(
-    title = "Interest cumulative amount by month (ever)",
+    title = "Interest cumulative amount by month (per year)",
     x = "Month",
     y = "Amount (€)"
   )

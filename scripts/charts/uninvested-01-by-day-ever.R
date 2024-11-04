@@ -26,9 +26,9 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag (uninvested amount) by day (ever)",
+    title = "Cash drag by day (ever)",
     x = "Date",
-    y = "Cash Drag (€)"
+    y = "Cash drag (€)"
   )
 
 save_plot("uninvested-01-amount-by-day-ever.png")

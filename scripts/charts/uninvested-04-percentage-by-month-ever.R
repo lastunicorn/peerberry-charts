@@ -30,9 +30,9 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   labs(
-    title = "Cash drag (uninvested percentage) average by month (ever)",
+    title = "Cash drag percentage average by month (ever)",
     x = "Month",
-    y = "Cash Drag (%)"
+    y = "Cash drag (%)"
   )
 
 save_plot("uninvested-04-percentage-by-month-ever.png")

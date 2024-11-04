@@ -23,4 +23,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("interest-daily-average-02-by-year-ever.png")
+save_plot("interest-daily-average-03-by-year-ever.png")

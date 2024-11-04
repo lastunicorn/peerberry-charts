@@ -6,7 +6,8 @@
 # Ex: "Jan 2024"
 
 month_year_labeller <- function(labels) {
-  formatted_labels <- format(as.Date(labels, format = "%Y-%m-%d"), "%b %Y")
+  date <- as.Date(labels, format = "%Y-%m-%d")
+  formatted_labels <- format(date, "%b %Y")
   return(formatted_labels)
 }
 

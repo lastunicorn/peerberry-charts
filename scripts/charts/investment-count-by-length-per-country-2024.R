@@ -16,6 +16,7 @@ pb_loans |>
   scale_x_continuous(
     n.breaks = 30
   ) +
+  expand_limits(x = 0) +
   labs(
     title = "Investment count by length (days) in 2024 (per country)",
     x = "Days",

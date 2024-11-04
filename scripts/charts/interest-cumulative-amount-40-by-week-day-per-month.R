@@ -2,9 +2,10 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Interest cumulative amount by week days (per month)
+# Interest cumulative amount by week days (per month) - 12 months
 
 pb_transactions |> 
+  filter(date >= pb_transactions.last_month_as_date - months(11)) |> 
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
   mutate(
     month_as_date = floor_date(date, "month"),
@@ -20,7 +21,7 @@ pb_transactions |>
   geom_text(aes(label = interest_amount), vjust = -0.5, size = 3, color = "#666") +
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
-    title = "Interest cumulative amount by week days (per month)",
+    title = "Interest cumulative amount by week days (per month) - 12 months",
     x = "Week day",
     y = "Amount (€)"
   )
