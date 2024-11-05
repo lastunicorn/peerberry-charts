@@ -1,1 +1,1 @@
-rscript "scripts/run-all.R"
+rscript "scripts/00-run-all.R"

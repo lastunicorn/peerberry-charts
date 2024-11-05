@@ -1,10 +1,10 @@
 library(tidyverse)
 
 
-ensure_dir(pb.data_dir)
+ensure_dir(config.data_dir)
 
 # Save investments
-write_rds(pb, file.path(pb.data_dir, "pb.rds"))
+write_rds(pb, file.path(config.data_dir, "pb.rds"))
 
 # Save transactions
-write_rds(pb_transactions, file.path(pb.data_dir, "pb_transactions.rds"))
+write_rds(pb_transactions, file.path(config.data_dir, "pb_transactions.rds"))

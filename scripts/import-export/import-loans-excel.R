@@ -19,7 +19,7 @@ library(readxl)
 # col_factor(c("FINISHED")) # Status (13)
 
 
-pb_loans <- read_xlsx(file.path(pb.import_dir, "investments - finished.xlsx")) |>
+pb_loans <- read_xlsx(file.path(config.import_dir, "investments - finished.xlsx")) |>
   select(c(1, 2, 4, 5, 6, 8, 9, 10, 12, 13)) |> 
   janitor::clean_names() |>  
   rename("last_payment_date" = "date_of_received_payment") |>
@@ -56,7 +56,7 @@ pb_loans <- read_xlsx(file.path(pb.import_dir, "investments - finished.xlsx")) |
 # col_double(), # Remaining principal (16 = x)
 # col_factor(c("FINISHED", "CURRENT", "LATE")) # Status (17)
 
-pb_loans <- read_xlsx(file.path(pb.import_dir, "investments - current.xlsx")) |>
+pb_loans <- read_xlsx(file.path(config.import_dir, "investments - current.xlsx")) |>
   select(c(1, 2, 4, 5, 6, 8, 9, 14, 15, 17)) |> 
   janitor::clean_names() |>  
   rename("last_payment_date" = "last_received_payment_date") |>

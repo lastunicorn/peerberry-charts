@@ -1,3 +1,3 @@
 #! /bin/bash
 
-Rscript scripts/run-all.R
+Rscript scripts/00-run-all.R

@@ -23,12 +23,5 @@ old_option_pillar.sigfig <- options(pillar.sigfig = 20)
 # ------------------------------------------------------------------------------
 # Utilities
 
-source("scripts/utils/utils.R")
-
-
-# ------------------------------------------------------------------------------
-# Constants
-
-pb.import_dir <- "data-raw"
-pb.data_dir <- "data"
-pb.output_dir <- "output"
+source("scripts/environment/utils.R")
+source("scripts/environment/config.R")
