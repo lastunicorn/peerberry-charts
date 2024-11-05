@@ -15,16 +15,8 @@ pb_transactions |>
   ) |>
   group_by(month_as_date) |>
   arrange(date) |>
-  mutate(
-    month_first_date = floor_date(date, "month"),
-    month_first_date = if_else(month_first_date < pb_transactions.first_date, pb_transactions.first_date, month_first_date),
-    month_last_date = ceiling_date(date, "month") - days(1),
-    month_last_date = if_else(month_last_date > pb_transactions.last_date, pb_transactions.last_date, month_last_date),
-    month_interval = month_first_date %--% (month_last_date + days(1)),
-    days_in_month = month_interval / days(1)
-  ) |> 
   summarize(
-    interest_amount = sum(amount) / first(days_in_month),
+    interest_amount = sum(amount) / pb_transactions.days_in_month(first(date)),
     year = as.factor(first(year(month_as_date)))
   ) |>
   ggplot(aes(x = month_as_date, y = interest_amount)) +
@@ -39,3 +31,22 @@ pb_transactions |>
   )
 
 save_plot("interest-daily-average-02-by-month-per-year.png")
+
+
+
+
+pb_transactions.days_in_month <- function(date) {
+  date = as.Date(date)
+  
+  month_first_date = floor_date(date, "month");
+  month_first_date = if_else(month_first_date < pb_transactions.first_date, pb_transactions.first_date, month_first_date);
+  
+  month_last_date = ceiling_date(date, "month") - days(1);
+  month_last_date = if_else(month_last_date > pb_transactions.last_date, pb_transactions.last_date, month_last_date);
+  
+  month_interval = month_first_date %--% (month_last_date + days(1));
+  days_in_month = month_interval / days(1);
+  
+  return(days_in_month);
+}
+

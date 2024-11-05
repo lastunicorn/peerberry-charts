@@ -7,7 +7,7 @@ library(lubridate)
 
 pb_transactions |>
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
-  add_start_end_dates() |> 
+  pb_transactions.add_start_end_dates() |> 
   group_by(date) |>
   arrange(date) |> 
   summarize(interest_amount = sum(amount)) |>

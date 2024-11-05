@@ -24,4 +24,6 @@ old_option_pillar.sigfig <- options(pillar.sigfig = 20)
 # Utilities
 
 source("scripts/environment/utils.R")
+source("scripts/environment/utils-datetime.R")
+source("scripts/environment/utils-ggplot.R")
 source("scripts/environment/config.R")

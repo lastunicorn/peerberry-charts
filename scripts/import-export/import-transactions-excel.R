@@ -5,7 +5,7 @@ library(readxl)
 # Import transactions
 
 pb_transactions <- read_and_merge_excels(
-  file.path(pb.import_dir, list.files(config.import_dir, pattern = "transactions - \\d+\\.xlsx"))
+  file.path(config.import_dir, list.files(config.import_dir, pattern = "transactions - \\d+\\.xlsx"))
 ) |> 
   #select(c(1, 2, 3, 4, 6, 7, 8)) |>
   janitor::clean_names() |>
