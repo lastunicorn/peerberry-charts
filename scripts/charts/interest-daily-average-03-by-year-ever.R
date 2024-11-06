@@ -16,7 +16,11 @@ pb_transactions |>
   summarize(interest_amount = sum(amount) / first(days_in_year)) |>
   ggplot(aes(x = year, y = interest_amount)) +
   geom_col(width = .5) +
-  geom_text(aes(label = format(round(interest_amount, 2), nsmall = 2)), vjust = -0.5, size = 3) +
+  geom_text(
+    aes(label = format(round(interest_amount, 2), nsmall = 2)),
+    vjust = -0.5,
+    size = 3
+  ) +
   labs(
     title = "Interest daily average by year (ever)",
     x = "Year",

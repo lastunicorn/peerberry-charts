@@ -17,7 +17,11 @@ pb_transactions |>
   ) |> 
   ggplot(aes(x = week_day, y = count)) +
   geom_col(width = .75) +
-  geom_text(aes(label = count), vjust = -0.5, size = 3) +
+  geom_text(
+    aes(label = count),
+    vjust = -0.5,
+    size = 3
+  ) +
   facet_wrap(~ year, ncol = 1) +
   labs(
     title = "Interest count by week days (per year)",

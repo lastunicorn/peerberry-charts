@@ -26,7 +26,11 @@ pb_transactions |>
   ggplot(aes(x = date)) +
   geom_col(aes(y = interest_amount)) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b",
+    minor_breaks = NULL
+  ) +
   labs(
     title = "Principal cumulative amount returned by day (per year)",
     x = "Date",

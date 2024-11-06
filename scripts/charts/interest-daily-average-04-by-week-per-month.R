@@ -21,7 +21,12 @@ pb_transactions |>
   ) |> 
   ggplot(aes(x = week_day, y = interest_average)) +
   geom_col(width = .75) +
-  geom_text(aes(label = format(round(interest_average, 2), nsmall = 2)), vjust = -0.5, size = 3, color = "#666") +
+  geom_text(
+    aes(label = format(round(interest_average, 2), nsmall = 2)),
+    vjust = -0.5,
+    size = 3,
+    color = "#666"
+  ) +
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest daily average amount by week days (per month)",

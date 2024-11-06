@@ -29,7 +29,11 @@ pb_transactions |>
   geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +
   geom_area(aes(y = uninvested_amount), fill = "gray60") +
   geom_step(aes(y = uninvested_amount), direction = "hv", color = "gray20") +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    minor_breaks = NULL
+  ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Total amount with uninvested amount by date (ever)",

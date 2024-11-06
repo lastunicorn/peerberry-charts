@@ -14,7 +14,14 @@ pb_transactions <- read_and_merge_excels(
     amount = as.numeric(amount)
   ) |> 
   convert_to_factor(type, c("INVESTMENT", "BUYBACK_INTEREST", "BUYBACK_PRINCIPAL", "DEPOSIT", "REPAYMENT_INTEREST", "REPAYMENT_PRINCIPAL")) |> 
-  convert_to_factor(loan_status, c("CURRENT", "LATE", "FINISHED", NA))
+  convert_to_factor(loan_status, c("CURRENT", "LATE", "FINISHED", NA)) |> 
+  mutate(
+    funds_delta = case_when(
+      type %in% c("WITHDRAW") ~ -amount,
+      type %in% c("DEPOSIT", "BUYBACK_INTEREST", "REPAYMENT_INTEREST") ~ amount,
+      .default = 0
+    )
+  )
 
 
 # ------------------------------------------------------------------------------

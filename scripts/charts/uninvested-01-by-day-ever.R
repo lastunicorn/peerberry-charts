@@ -23,7 +23,11 @@ pb_transactions |>
   ggplot(aes(x = date, y = uninvested_amount)) +
   geom_area(fill = "gray60") +
   geom_path() +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    minor_breaks = NULL
+  ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Cash drag by day (ever)",

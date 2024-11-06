@@ -14,7 +14,12 @@ pb_transactions |>
   summarize(count = n(), .groups = "drop_last") |> 
   ggplot(aes(x = week_day, y = count)) +
   geom_col(width = .75) +
-  geom_text(aes(label = count), vjust = -0.5, size = 3, color = "#666") +
+  geom_text(
+    aes(label = count),
+    vjust = -0.5,
+    size = 3,
+    color = "#666"
+  ) +
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest count by week days (per month)",

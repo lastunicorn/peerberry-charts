@@ -17,7 +17,11 @@ pb_transactions |>
   ggplot(aes(x = date)) +
   geom_col(aes(y = interest_amount)) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b",
+    minor_breaks = NULL
+  ) +
   scale_y_continuous(n.breaks = 15, minor_breaks = F) +
   labs(
     title = "Interest cumulative amount by day (per year)",

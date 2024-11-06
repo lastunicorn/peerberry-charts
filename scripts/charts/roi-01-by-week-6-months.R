@@ -2,11 +2,6 @@
 # ROI - Net annualized return % by week - last 6 months
 
 pb_transactions |> 
-  mutate(
-    incomming_amount = if_else(type %in% c("DEPOSIT", "BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0),
-    outgoing_amount = if_else(type %in% c("WITHDRAW"), amount, 0),
-    funds_delta = incomming_amount - outgoing_amount
-  ) |> 
   group_by(date) |> 
   summarize(
     interest = sum(if_else(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0)),
@@ -38,9 +33,15 @@ pb_transactions |>
   ) |> 
   ggplot(aes(x = week_as_date, y = roi)) +
   geom_col() +
-  geom_text(aes(label = paste(format(round(roi, 2), nsmall = 2), "%")), vjust = -0.5, size = 3) +
-  #guides(x = guide_axis(angle = 70)) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  geom_text(
+    aes(label = paste(format(round(roi, 2), nsmall = 2), "%")),
+    vjust = -0.5
+  ) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    minor_breaks = NULL
+  ) +
   labs(
     title = "Net annualized return % (including cash drag) by week - last 6 months",
     x = "Week",

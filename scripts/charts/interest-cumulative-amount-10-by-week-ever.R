@@ -15,7 +15,11 @@ pb_transactions |>
   ggplot(aes(x = week_as_date, y = interest_amount)) +
   geom_col() +
   guides(x = guide_axis(angle = 60)) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    minor_breaks = NULL
+  ) +
   labs(
     title = "Interest cumulative amount by week (ever)",
     x = "Week",

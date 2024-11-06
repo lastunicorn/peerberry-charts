@@ -23,7 +23,11 @@ pb_transactions |>
   geom_area(aes(y = total_amount), fill = "#D4E79E") +
   geom_step(aes(y = total_amount), direction = "hv", color = "#7E8C40") +
   geom_col(aes(y = amount_if_principal)) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b %Y",
+    minor_breaks = NULL
+  ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Total amount with principal returned by date (ever)",

@@ -16,7 +16,11 @@ pb_loans |>
   summarize(n = n()) |> 
   ggplot(aes(x = remaining_days, y = n)) +
   geom_col() +
-  geom_text(aes(label = n), vjust = -0.5, size = 3) +
+  geom_text(
+    aes(label = n),
+    vjust = -0.5,
+    size = 3
+  ) +
   labs(
     title = "Late investments",
     x = "Days",

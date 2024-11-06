@@ -22,7 +22,9 @@ pb_transactions |>
   ggplot(aes(x = reorder(x, month_as_date), y = sum)) +
   geom_col() +
   facet_wrap(~ country) +
-  scale_x_discrete(limits = format(seq.Date(from = floor_date(today(), "year"), by = "month", length.out = 12), "%b")) +
+  scale_x_discrete(
+    limits = format(seq.Date(from = floor_date(today(), "year"), by = "month", length.out = 12), "%b")
+  ) +
   guides(x = guide_axis(angle = 70)) +
   labs(
     title = paste("Investment amount by month in ", year(today()), " (per country)", sep = ""),
