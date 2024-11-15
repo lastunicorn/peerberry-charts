@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Late investments per range
+# Late investments count per range
 
 pb_loans |> 
   filter(status != "FINISHED") |> 
@@ -33,4 +33,4 @@ pb_loans |>
     y = "Count"
   )
 
-save_plot("investment-late-per-range.png")
+save_plot("investment-late-count-per-range.png")

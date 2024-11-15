@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Investment late by late-time per country (all years)
+# Investment late count by late-time per country (all years)
 
 pb_loans |> 
   filter(status == "FINISHED") |> 
@@ -14,7 +14,7 @@ pb_loans |>
   facet_wrap(~ country, ncol = 3) +
   scale_x_continuous(n.breaks = 20) +
   labs(
-    title = "Investment late by late-time per country (all years)",
+    title = "Investment late count by late-time per country (all years)",
     x = "Late days",
     y = "Count",
     fill = "Year"

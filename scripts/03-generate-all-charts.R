@@ -41,9 +41,11 @@ source("scripts/charts/investment-count-by-length-per-year.R")
 source("scripts/charts/investment-count-by-length-per-country-2024.R")
 
 source("scripts/charts/investment-active.R")
-source("scripts/charts/investment-late-by-latetime-per-country-ever.R")
-source("scripts/charts/investment-late-per-day.R")
-source("scripts/charts/investment-late-per-range.R")
+
+source("scripts/charts/investment-late-amount-per-day.R")
+source("scripts/charts/investment-late-count-by-latetime-per-country-ever.R")
+source("scripts/charts/investment-late-count-per-day.R")
+source("scripts/charts/investment-late-count-per-range.R")
 
 
 # ------------------------------------------------------------------------------

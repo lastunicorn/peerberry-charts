@@ -1,8 +1,5 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
-# Late investments per day
+# Late investments count per day
 
 pb_loans |> 
   filter(status != "FINISHED") |> 
@@ -25,10 +22,15 @@ pb_loans |>
     vjust = -0.5,
     size = 3
   ) +
+  scale_x_continuous(
+    n.breaks = 60,
+    minor_breaks = F
+  ) +
   labs(
-    title = str_c("Late investments per days (", today(), ")"),
+    title = str_c("Late investments per day"),
+    subtitle = str_c("today: ", today()),
     x = "Days",
     y = "Count"
   )
 
-save_plot("investment-late-per-days.png", width = 60)
+save_plot("investment-late-count-per-day.png", width = 60)
