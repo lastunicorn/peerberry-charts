@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Late investments
+# Late investments per day
 
 pb_loans |> 
   filter(status != "FINISHED") |> 
@@ -10,11 +10,15 @@ pb_loans |>
     remaining_days = estimated_final_payment_date - today(),
     .keep = "used"
   ) |> 
-  filter(remaining_days <= 0) |> 
-  mutate(remaining_days = -remaining_days) |> 
-  group_by(remaining_days) |> 
-  summarize(n = n()) |> 
-  ggplot(aes(x = remaining_days, y = n)) +
+  mutate(
+    late_days = -remaining_days
+  ) |> 
+  group_by(late_days) |> 
+  summarize(
+    n = n(),
+    is_late = first(late_days) >= 0
+  ) |> 
+  ggplot(aes(x = late_days, y = n, fill = is_late)) +
   geom_col() +
   geom_text(
     aes(label = n),
@@ -22,8 +26,9 @@ pb_loans |>
     size = 3
   ) +
   labs(
-    title = "Late investments",
+    title = str_c("Late investments per days (", today(), ")"),
     x = "Days",
     y = "Count"
   )
-  
+
+save_plot("investment-late-per-days.png", width = 60)

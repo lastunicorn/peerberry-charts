@@ -10,7 +10,7 @@ pb_transactions |>
   mutate(
     funds = cumsum(funds_delta)
   ) |> 
-  filter(date >= floor_date(today(), "month") - months(6)) |> 
+  filter(date >= pb_transactions.current_month_as_date - months(6)) |> 
   arrange(date) |> 
   mutate(
     start_date = min(date),

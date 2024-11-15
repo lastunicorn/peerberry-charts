@@ -4,7 +4,7 @@
 pb_transactions |>  
   filter(
     type == "INVESTMENT",
-    date >= floor_date(today(), "month") - months(11)
+    date >= pb_transactions.current_month_as_date - months(11)
   ) |> 
   mutate(
     month_as_date = floor_date(date, "month")
