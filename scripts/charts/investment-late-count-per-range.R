@@ -9,11 +9,11 @@ pb_loans |>
   mutate(
     remaining_days = as.numeric(estimated_final_payment_date - today()),
     late_category = case_when(
-      remaining_days > 0 ~ "in-time",
-      remaining_days == 0 ~ "laste-0",
-      remaining_days >= -15 ~ "late-15",
-      remaining_days >= -30 ~ "late-30",
-      remaining_days >= -60 ~ "late-60",
+      remaining_days > 0 ~ "in time",
+      remaining_days == 0 ~ "late 0",
+      remaining_days >= -15 ~ "late 15",
+      remaining_days >= -30 ~ "late 30",
+      remaining_days >= -60 ~ "late 60",
       .default = "late-late"
     ),
     .keep = "used"

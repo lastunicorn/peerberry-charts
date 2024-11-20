@@ -4,7 +4,7 @@
 pb_loans |> 
   filter(status != "FINISHED") |> 
   mutate(
-    remaining_days = estimated_final_payment_date - today()
+    remaining_days = estimated_final_payment_date - pb_today
   ) |> 
   mutate(
     late_days = -remaining_days
@@ -24,14 +24,18 @@ pb_loans |>
     angle = 45
   ) +
   scale_x_continuous(
-    n.breaks = 60,
-    minor_breaks = F
+    #n.breaks = 60,
+    minor_breaks = F,
+    limits = function(x){
+      c(-100, 60)
+    },
+    breaks = seq(from = -100, to = 60, by = 2)
   ) +
   labs(
     title = str_c("Late investments per day"),
-    subtitle = str_c("today: ", today()),
+    subtitle = str_c("today: ", pb_today),
     x = "Days",
     y = "Amount (€)"
   )
 
-save_plot("investment-late-amount-per-day.png", width = 60)
+save_plot(str_c("investment-late-amount-per-day-", pb_today, ".png"), width = 60)
