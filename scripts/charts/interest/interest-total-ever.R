@@ -1,9 +1,5 @@
-library(tidyverse)
-library(lubridate)
-
-
 # ------------------------------------------------------------------------------
-# Total interest by date
+# Total interest by date (ever)
 
 pb_transactions |> 
   arrange(date) |> 

@@ -58,4 +58,4 @@ pb_transactions |>
     y = "ROI (% p.a.)"
   )
 
-save_plot("roi-03-by-month-per-year.png")
+save_plot("interest-percentage-03-by-month-per-year.png")
