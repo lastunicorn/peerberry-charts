@@ -1,30 +1,28 @@
 # ------------------------------------------------------------------------------
-# Late investments amount per day
+# Late investments count per day
 
 pb_loans |> 
   filter(status != "FINISHED") |> 
   mutate(
-    remaining_days = estimated_final_payment_date - pb_today
+    remaining_days = estimated_final_payment_date - pb_today,
+    .keep = "used"
   ) |> 
   mutate(
     late_days = -remaining_days
   ) |> 
   group_by(late_days) |> 
   summarize(
-    n = sum(invested_amount),
-    is_late = first(late_days) >= 0
+    n = n(),
+    is_late = first(late_days) > 0
   ) |> 
   ggplot(aes(x = late_days, y = n, fill = is_late)) +
   geom_col(width = .7) +
   geom_text(
     aes(label = n),
-    hjust = -0.1,
-    vjust = -0.1,
-    size = 3,
-    angle = 45
+    vjust = -0.5,
+    size = 3
   ) +
   scale_x_continuous(
-    #n.breaks = 60,
     minor_breaks = F,
     limits = function(x){
       c(-100, 60)
@@ -35,7 +33,7 @@ pb_loans |>
     title = str_c("Late investments per day"),
     subtitle = str_c("today: ", pb_today),
     x = "Days",
-    y = "Amount (€)"
+    y = "Count"
   )
 
-save_plot(str_c("investment-late-amount-per-day-", pb_today, ".png"), width = 60)
+save_plot(str_c("investment-late-03-count-per-day-", pb_today, ".png"), width = 60)

@@ -23,6 +23,9 @@ pb_transactions |>
     color = "#666"
   ) +
   facet_wrap(~ country) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.15))
+  ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount by year (per country)",

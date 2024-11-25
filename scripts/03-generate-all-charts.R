@@ -47,10 +47,11 @@ source("scripts/charts/investment/investment-count-by-length-per-country-2024.R"
 
 source("scripts/charts/investment/investment-active.R")
 
-source("scripts/charts/investment/investment-late-amount-per-day.R")
-source("scripts/charts/investment/investment-late-count-by-latetime-per-country-ever.R")
-source("scripts/charts/investment/investment-late-count-per-day.R")
-source("scripts/charts/investment/investment-late-count-per-range.R")
+source("scripts/charts/investment/investment-late-01-count-by-latetime-per-country-ever.R")
+source("scripts/charts/investment/investment-late-02-amount-per-day.R")
+source("scripts/charts/investment/investment-late-03-count-per-day.R")
+source("scripts/charts/investment/investment-late-04-count-per-range.R")
+source("scripts/charts/investment/investment-late-05-amount-per-range.R")
 
 
 # ------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ source("scripts/charts/principal/principal-cumulative-amount-by-day-per-year.R")
 # ------------------------------------------------------------------------------
 # Total
 
-source("scripts/charts/total/total-01.R")
+#source("scripts/charts/total/total-01.R")
 source("scripts/charts/total/total-02-with-interest-and-uninvested-by-date-ever.R")
 #source("scripts/charts/total/total-03-with-interest.R")
 
