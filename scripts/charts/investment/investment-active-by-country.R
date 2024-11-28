@@ -8,6 +8,9 @@ pb_loans |>
     total_amount = sum(invested_amount),
     .groups = "drop"
   ) |> 
+  mutate(
+    country = fct(country, levels = pb_country_levels)
+  ) |> 
   ggplot(aes(x = country, y = total_amount, fill = factor(desc(status)))) +
   geom_col() +
   scale_fill_manual(
@@ -20,6 +23,7 @@ pb_loans |>
     position = position_stack(vjust = .5),
     color = "white"
   )+
+  scale_x_discrete(drop = FALSE) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount active by country",

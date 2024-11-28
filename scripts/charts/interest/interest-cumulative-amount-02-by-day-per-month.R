@@ -1,7 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount daily (per month) - last 12 months
 
@@ -19,7 +15,10 @@ pb_transactions |>
   ggplot(aes(x = day)) +
   geom_col(aes(y = interest_amount)) +
   facet_wrap(~ month, labeller = as_labeller(month_year_labeller)) +
-  scale_x_continuous(n.breaks = 5) +
+  scale_x_continuous(
+    n.breaks = 10,
+    minor_breaks = F
+  ) +
   labs(
     title = "Interest cumulative amount by day (per month) - 12 months",
     subtitle = str_c("today: ", pb_today),

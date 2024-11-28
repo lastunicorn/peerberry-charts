@@ -6,7 +6,7 @@ source("scripts/import-export/import-transactions-excel.R")
 
 
 # ------------------------------------------------------------------------------
-# Calculate important values
+# Calculate important dates
 
 pb_transactions.first_date <- min(pb_transactions$date)
 pb_transactions.last_date <- max(pb_transactions$date)
@@ -28,3 +28,13 @@ pb_transactions.current_year_as_date = floor_date(pb_transactions.current_date, 
 pb_today <- today()
 #pb_today <- pb_transactions.last_date
 #pb_today <- ymd("2024-11-18")
+
+
+# ------------------------------------------------------------------------------
+# Calculate countries
+
+pb_country_levels <- pb_loans |> 
+  group_by(country) |> 
+  summarize()
+
+pb_country_levels <- pb_country_levels[['country']]
