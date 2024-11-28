@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by month (per year)
 

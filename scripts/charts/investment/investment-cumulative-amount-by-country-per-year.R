@@ -3,7 +3,10 @@
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
-  mutate(year = year(date)) |> 
+  mutate(
+    year = year(date),
+    country = fct(country, pb_country_levels)
+  ) |> 
   group_by(year, country) |> 
   summarize(
     sum = sum(amount),

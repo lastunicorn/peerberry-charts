@@ -16,13 +16,17 @@ pb_transactions |>
   group_by(month_as_date) |>
   arrange(date) |>
   summarize(
-    interest_amount = sum(amount) / pb_transactions.days_in_month(first(date)),
-    year = as.factor(first(year(month_as_date)))
+    amount = sum(amount)
   ) |>
+  mutate(
+    year = as.factor(year(month_as_date)),
+    days_in_month = pb_transactions.days_in_month(month_as_date),
+    interest_amount = amount / days_in_month
+  ) |> 
   ggplot(aes(x = month_as_date, y = interest_amount)) +
   geom_col() +
   geom_text(
-    aes(label = format(round(interest_amount, 2), nsmall = 2)),
+    aes(label = if_else(interest_amount == 0, NA, format(round(interest_amount, 2), nsmall = 2))),
     vjust = -0.5,
     size = 3
   ) +

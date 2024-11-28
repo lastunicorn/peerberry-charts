@@ -24,7 +24,8 @@ pb_transactions |>
     uninvested_percentage_average = uninvested_amount_average * 100 / total_amount_average
   ) |> 
   add_row(
-    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11))
+    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11)),
+    uninvested_percentage_average = 0
   ) |>
   mutate(
     year = year(month_as_date)
@@ -32,7 +33,7 @@ pb_transactions |>
   ggplot(aes(x = month_as_date, y = uninvested_percentage_average)) +
   geom_col() +
   geom_text(
-    aes(label = paste(format(round(uninvested_percentage_average, 2), nsmall = 2), "%")),
+    aes(label = if_else(uninvested_percentage_average == 0, NA, paste(format(round(uninvested_percentage_average, 2), nsmall = 2), "%"))),
     vjust = -0.5,
     size = 3
   ) +

@@ -7,6 +7,10 @@ pb_transactions |>
     amount_with_sign = if_else(type == "INVESTMENT", -amount, amount),
     uninvested_amount = cumsum(amount_with_sign)
   ) |> 
+  add_row(
+    date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11)),
+    uninvested_amount = 0
+  ) |>
   group_by(date) |> 
   summarize(
     uninvested_amount = last(uninvested_amount)
@@ -19,15 +23,12 @@ pb_transactions |>
   summarize(
     uninvested_amount = sum(uninvested_amount) / first(days_in_month)
   ) |> 
-  add_row(
-    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11))
-  ) |>
   mutate(
     year = year(month_as_date)
   ) |> 
   ggplot(aes(x = month_as_date, y = uninvested_amount)) +
   geom_col() +
-  geom_text(aes(label = format(round(uninvested_amount, 2), nsmall = 2)), vjust = -0.5, size = 3) +
+  geom_text(aes(label = if_else(uninvested_amount == 0, NA, format(round(uninvested_amount, 2), nsmall = 2))), vjust = -0.5, size = 3) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
   scale_y_continuous(
     n.breaks = 20,
