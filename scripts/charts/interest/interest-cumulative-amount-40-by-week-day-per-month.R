@@ -27,6 +27,7 @@ pb_transactions |>
   facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
   labs(
     title = "Interest cumulative amount by week days (per month) - 12 months",
+    subtitle = str_c("today: ", pb_today),
     x = "Week day",
     y = "Amount (€)"
   )

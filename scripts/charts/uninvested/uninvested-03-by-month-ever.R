@@ -34,6 +34,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Cash drag average by month (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Month",
     y = "Cash drag (€)"
   )

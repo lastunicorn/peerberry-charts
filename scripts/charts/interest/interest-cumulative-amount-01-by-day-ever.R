@@ -1,7 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by day (ever)
 

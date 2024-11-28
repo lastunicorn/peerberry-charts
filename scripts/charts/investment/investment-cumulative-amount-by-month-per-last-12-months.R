@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Invested amount of money by month in last 12 months per country.
+# Invested cumulative amount by month in last 12 months per country.
 
 pb_transactions |>  
   filter(
@@ -25,8 +25,9 @@ pb_transactions |>
   theme(axis.text = element_text(size = 7)) +
   labs(
     title = "Investment amount by month in last 12 months (per country)",
+    subtitle = str_c("today: ", pb_today),
     x = "Purchase month",
     y = "Amount (€)"
   )
 
-save_plot("investment-amount-by-month-per-country-12.png")
+save_plot("investment-cumulative-amount-by-month-per-country-12.png")

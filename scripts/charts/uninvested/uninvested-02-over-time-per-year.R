@@ -3,7 +3,7 @@ library(purrr)
 
 
 # ------------------------------------------------------------------------------
-# Uninvested amount by day (per year)
+# Uninvested amount over time (per year)
 
 pb_transactions |> 
   arrange(date) |> 
@@ -31,9 +31,10 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   labs(
-    title = "Cash drag by day (per year)",
+    title = "Cash drag over time (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Cash drag (€)"
   )
 
-save_plot("uninvested-02-amount-by-day-per-year.png")
+save_plot("uninvested-02-amount-over-time-per-year.png")

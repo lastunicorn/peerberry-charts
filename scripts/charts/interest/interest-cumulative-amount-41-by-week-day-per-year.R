@@ -25,6 +25,7 @@ pb_transactions |>
   facet_wrap(~ year, ncol = 1) +
   labs(
     title = "Interest cumulative amount by week days (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Week day",
     y = "Amount (€)"
   )

@@ -3,7 +3,7 @@ library(purrr)
 
 
 # ------------------------------------------------------------------------------
-# Uninvested amount by day (ever)
+# Uninvested amount over time (ever)
 
 pb_transactions |> 
   arrange(date) |> 
@@ -30,9 +30,10 @@ pb_transactions |>
   ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Cash drag by day (ever)",
+    title = "Cash drag over time (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Cash drag (€)"
   )
 
-save_plot("uninvested-01-amount-by-day-ever.png")
+save_plot("uninvested-01-amount-over-time-ever.png")

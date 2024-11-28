@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ROI - Net annualized return % by week - last 6 months
+# ROI - Interest % by week - last 6 months
 
 pb_transactions |> 
   group_by(date) |> 
@@ -43,7 +43,8 @@ pb_transactions |>
     minor_breaks = NULL
   ) +
   labs(
-    title = "Net annualized return % (including cash drag) by week - last 6 months",
+    title = "Interest % (including cash drag) by week - last 6 months",
+    subtitle = str_c("today: ", pb_today),
     x = "Week",
     y = "ROI (% p.a.)"
   )

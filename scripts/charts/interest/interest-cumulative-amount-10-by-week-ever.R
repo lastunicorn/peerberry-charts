@@ -22,6 +22,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Interest cumulative amount by week (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Week",
     y = "Amount (€)"
   )

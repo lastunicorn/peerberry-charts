@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 # ------------------------------------------------------------------------------
-# Amount of money invested in each year (per country)
+# Investment cumulative amount by year (per country)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
@@ -29,8 +29,9 @@ pb_transactions |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount by year (per country)",
+    subtitle = str_c("today: ", pb_today),
     x = "Purchease year",
     y = "Amount (€)"
   )
 
-save_plot("investment-amount-by-year-per-country.png", width=30, height=20)
+save_plot("investment-cumulative-amount-by-year-per-country.png", width=30, height=20)

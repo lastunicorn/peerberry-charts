@@ -1,8 +1,5 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
-# Individual investment amount over time
+# Individual investment amount over time (ever)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
@@ -13,9 +10,9 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Individual investment amount over time",
+    title = "Individual investment amount over time (ever)",
     x = "Date",
     y = "Investment size (€)"
   )
 
-save_plot("investment-amount-over-time.png")
+save_plot("investment-amount-over-time-ever.png")

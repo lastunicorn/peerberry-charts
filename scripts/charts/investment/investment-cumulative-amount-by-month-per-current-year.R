@@ -1,8 +1,5 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
-# Invested amount of money by month in last year per country.
+# Invested cumulative amount by month in last year per country.
 
 pb_transactions |>  
   filter(type == "INVESTMENT") |> 
@@ -27,9 +24,10 @@ pb_transactions |>
   ) +
   guides(x = guide_axis(angle = 70)) +
   labs(
-    title = paste("Investment amount by month in ", pb_transactions.current_year, " (per country)", sep = ""),
+    title = str_c("Investment amount by month in ", pb_transactions.current_year, " (per country)"),
+    subtitle = str_c("today: ", pb_today),
     x = "Purchase month",
     y = "Amount (€)"
   )
 
-save_plot(paste("investment-amount-by-month-per-country-", pb_transactions.current_year, ".png", sep = ""))
+save_plot(paste("investment-cumulative-amount-by-month-per-country-", pb_transactions.current_year, ".png", sep = ""))

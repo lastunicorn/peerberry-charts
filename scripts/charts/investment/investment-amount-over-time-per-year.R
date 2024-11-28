@@ -1,8 +1,5 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
-# Individual investment amount over time (by year)
+# Individual investment amount over time (per year)
 
 pb_transactions |> 
   filter(type == "INVESTMENT") |> 
@@ -20,4 +17,4 @@ pb_transactions |>
     y = "Investment size (€)"
   )
 
-save_plot("investment-amount-over-time-by-year.png")
+save_plot("investment-amount-over-time-per-year.png")

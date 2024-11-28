@@ -37,4 +37,6 @@ pb_loans |>
     y = "Amount (€)"
   )
 
-save_plot(str_c("investment-late-02-amount-per-day-", pb_today, ".png"), width = 60)
+
+save_plot(str_c("investment-late-02-amount-per-day.png"), width = 60)
+save_plot(str_c("investment-late-amount/investment-late-amount-per-day-", pb_today, ".png"), width = 60)

@@ -23,9 +23,10 @@ pb_loans |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount active by country",
+    subtitle = str_c("today: ", pb_today),
     x = "Country",
     y = "Amount (€)",
     fill = "Status"
   )
 
-save_plot("investment-amount-active.png")
+save_plot("investment-amount-active-by-country.png")

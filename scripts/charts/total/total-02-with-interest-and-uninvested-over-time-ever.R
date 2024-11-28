@@ -2,7 +2,7 @@ library(tidyverse)
 library(lubridate)
 
 # ------------------------------------------------------------------------------
-# Total amount with interest and uninvested by date (ever)
+# Total amount with interest and uninvested over time (ever)
 
 pb_transactions |> 
   group_by(date) |> 
@@ -42,9 +42,10 @@ pb_transactions |>
   ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Total amount with interest and uninvested by date (ever)",
+    title = "Total amount with interest and uninvested over time (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("total-02-with-interest-and-uninvested-by-date-ever.png")
+save_plot("total-02-with-interest-and-uninvested-over-time-ever.png")

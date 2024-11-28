@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# ROI - Net annualized return % by month - ever
+# ROI - Interest % by month - ever
 
 pb_transactions |> 
   group_by(date) |> 
@@ -44,7 +44,8 @@ pb_transactions |>
     minor_breaks = NULL
   ) +
   labs(
-    title = "Net annualized return % (including cash drag) by month",
+    title = "Interest % (including cash drag) by month",
+    subtitle = str_c("today: ", pb_today),
     x = "Month",
     y = "ROI (% p.a.)"
   )

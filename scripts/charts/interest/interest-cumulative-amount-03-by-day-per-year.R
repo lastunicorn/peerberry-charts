@@ -25,6 +25,7 @@ pb_transactions |>
   scale_y_continuous(n.breaks = 15, minor_breaks = F) +
   labs(
     title = "Interest cumulative amount by day (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )

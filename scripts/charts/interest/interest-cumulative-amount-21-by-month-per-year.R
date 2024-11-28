@@ -34,6 +34,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Interest cumulative amount by month (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Month",
     y = "Amount (€)"
   )

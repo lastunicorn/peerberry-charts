@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Total interest by date (ever)
+# Total interest over time (ever)
 
 pb_transactions |> 
   arrange(date) |> 
@@ -26,9 +26,10 @@ pb_transactions |>
   ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
-    title = "Total interest (ever)",
+    title = "Total interest over time (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("interest-total-ever.png")
+save_plot("interest-total-over-time-ever.png")

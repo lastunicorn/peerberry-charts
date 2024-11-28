@@ -23,6 +23,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Interest daily average by year (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Year",
     y = "Amount (€)"
   )

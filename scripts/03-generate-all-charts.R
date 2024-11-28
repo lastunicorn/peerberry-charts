@@ -30,14 +30,14 @@ source("scripts/charts/interest/interest-total-ever.R")
 # ------------------------------------------------------------------------------
 # Investment
 
-source("scripts/charts/investment/investment-total-amount-by-country-per-year.R")
-source("scripts/charts/investment/investment-total-amount-by-month-ever.R")
-source("scripts/charts/investment/investment-total-amount-by-month-per-current-year.R")
-source("scripts/charts/investment/investment-total-amount-by-month-per-last-12-months.R")
-source("scripts/charts/investment/investment-total-amount-by-year-per-country.R")
+source("scripts/charts/investment/investment-cumulative-amount-by-country-per-year.R")
+source("scripts/charts/investment/investment-cumulative-amount-by-month-ever.R")
+source("scripts/charts/investment/investment-cumulative-amount-by-month-per-current-year.R")
+source("scripts/charts/investment/investment-cumulative-amount-by-month-per-last-12-months.R")
+source("scripts/charts/investment/investment-cumulative-amount-by-year-per-country.R")
 
-source("scripts/charts/investment/investment-amount-over-time-by-year.R")
-#source("scripts/charts/investment/investment-amount-over-time.R")
+source("scripts/charts/investment/investment-amount-over-time-per-year.R")
+#source("scripts/charts/investment/investment-amount-over-time-ever.R")
 
 #source("scripts/charts/investment/investment-count-by-amount-ever.R")
 source("scripts/charts/investment/investment-count-by-amount-per-year.R")
@@ -45,7 +45,7 @@ source("scripts/charts/investment/investment-count-by-amount-per-year.R")
 source("scripts/charts/investment/investment-count-by-length-per-year.R")
 source("scripts/charts/investment/investment-count-by-length-per-country-2024.R")
 
-source("scripts/charts/investment/investment-active.R")
+source("scripts/charts/investment/investment-active-by-country.R")
 
 source("scripts/charts/investment/investment-late-01-count-by-latetime-per-country-ever.R")
 source("scripts/charts/investment/investment-late-02-amount-per-day.R")
@@ -65,14 +65,14 @@ source("scripts/charts/principal/principal-cumulative-amount-by-day-per-year.R")
 # Total
 
 #source("scripts/charts/total/total-01.R")
-source("scripts/charts/total/total-02-with-interest-and-uninvested-by-date-ever.R")
+source("scripts/charts/total/total-02-with-interest-and-uninvested-over-time-ever.R")
 #source("scripts/charts/total/total-03-with-interest.R")
 
 
 # ------------------------------------------------------------------------------
 # Uninvested (cash drag)
 
-#source("scripts/charts/uninvested/uninvested-01-by-day-ever.R")
-source("scripts/charts/uninvested/uninvested-02-by-day-per-year.R")
+#source("scripts/charts/uninvested/uninvested-01-over-time-ever.R")
+source("scripts/charts/uninvested/uninvested-02-over-time-per-year.R")
 source("scripts/charts/uninvested/uninvested-03-by-month-ever.R")
 source("scripts/charts/uninvested/uninvested-04-percentage-by-month-ever.R")

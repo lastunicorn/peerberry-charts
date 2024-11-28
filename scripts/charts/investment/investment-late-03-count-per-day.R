@@ -36,4 +36,5 @@ pb_loans |>
     y = "Count"
   )
 
-save_plot(str_c("investment-late-03-count-per-day-", pb_today, ".png"), width = 60)
+save_plot(str_c("investment-late-03-count-per-day.png"), width = 60)
+save_plot(str_c("investment-late-count/investment-late-count-per-day-", pb_today, ".png"), width = 60)

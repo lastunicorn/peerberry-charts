@@ -15,6 +15,7 @@ pb_loans |>
   scale_x_continuous(n.breaks = 20) +
   labs(
     title = "Investment late count by late-time per country (all years)",
+    subtitle = str_c("today: ", pb_today),
     x = "Late days",
     y = "Count",
     fill = "Year"
