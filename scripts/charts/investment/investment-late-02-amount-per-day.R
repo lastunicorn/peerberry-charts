@@ -38,5 +38,6 @@ pb_loans |>
   )
 
 
-save_plot(str_c("investment-late-02-amount-per-day.png"), width = 60)
-save_plot(str_c("investment-late-amount/investment-late-amount-per-day-", pb_today, ".png"), width = 60)
+save_plot("investment/investment-late-02-amount-per-day.png", width = 60)
+save_plot("investment-late-02-amount-per-day.png", width = 60)
+save_plot(str_c("history-investment-late-amount/investment-late-amount-per-day-", pb_today, ".png"), width = 60)

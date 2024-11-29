@@ -41,4 +41,5 @@ pb_loans |>
     y = "Amount (€)"
   )
 
+save_plot("investment/investment-late-05-amount-per-range.png")
 save_plot("investment-late-05-amount-per-range.png")

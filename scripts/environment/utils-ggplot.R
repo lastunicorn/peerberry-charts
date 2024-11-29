@@ -22,7 +22,10 @@ ensure_dir <- function(path) {
 # ------------------------------------------------------------------------------
 
 save_plot <- function(name, width = 30, height = 20) {
-  ensure_dir(config.output_dir)
   filePath <- file.path(config.output_dir, name)
+  dirPath <-  dirname(filePath)
+  
+  ensure_dir(dirPath)
+  
   ggsave(filePath, width = width, height = height, units = "cm", dpi = 300)
 }

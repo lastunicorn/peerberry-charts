@@ -21,4 +21,4 @@ pb_loans |>
     fill = "Year"
   )
 
-save_plot("investment-late-01-count-by-latetime-per-country.png")
+save_plot("investment/investment-late-01-count-by-latetime-per-country.png")

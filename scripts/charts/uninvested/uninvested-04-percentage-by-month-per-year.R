@@ -54,4 +54,5 @@ pb_transactions |>
     y = "Cash drag (%)"
   )
 
+save_plot("uninvested/uninvested-04-percentage-by-month-per-year.png")
 save_plot("uninvested-04-percentage-by-month-per-year.png")

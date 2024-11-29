@@ -30,8 +30,9 @@ pb_transactions |>
   scale_y_continuous(n.breaks = 20) +
   labs(
     title = "Total amount (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("total-01-amount-ever.png")
+save_plot("total/total-01-amount-ever.png")

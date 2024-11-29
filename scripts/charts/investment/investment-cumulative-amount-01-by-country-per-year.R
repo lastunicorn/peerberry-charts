@@ -23,8 +23,10 @@ pb_transactions |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount by country (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Country",
     y = "Amount (€)"
   )
 
-save_plot("investment-cumulative-amount-by-country-per-year.png")
+save_plot("investment/investment-cumulative-amount-01-by-country-per-year.png")
+save_plot("investment-cumulative-amount-01-by-country-per-year.png")

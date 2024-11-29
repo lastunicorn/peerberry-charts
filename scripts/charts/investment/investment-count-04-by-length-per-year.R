@@ -24,10 +24,12 @@ temp |>
   expand_limits(x = 0) +
   labs(
     title = "Investment count by length in days (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Days",
     y = "Count"
   )
 
 remove(temp)
 
-save_plot("investment-count-by-length-per-year.png")
+save_plot("investment/investment-count-04-by-length-per-year.png")
+save_plot("investment-count-04-by-length-per-year.png")

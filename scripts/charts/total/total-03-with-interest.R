@@ -31,8 +31,9 @@ pb_transactions |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Total amount with total interest by date (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )
 
-save_plot("total-03-amount-with-total-interest-by-date-ever.png")
+save_plot("total/total-03-amount-with-total-interest-by-date-ever.png")

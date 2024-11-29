@@ -24,10 +24,11 @@ pb_transactions |>
   guides(x = guide_axis(angle = 70)) +
   theme(axis.text = element_text(size = 7)) +
   labs(
-    title = "Investment amount by month in last 12 months (per country)",
+    title = "Investment amount by month (per country) - last 12 months",
     subtitle = str_c("today: ", pb_today),
     x = "Purchase month",
     y = "Amount (€)"
   )
 
-save_plot("investment-cumulative-amount-by-month-per-country-12.png")
+save_plot("investment/investment-cumulative-amount-04-by-month-per-country-12.png")
+save_plot("investment-cumulative-amount-04-by-month-per-country-12.png")

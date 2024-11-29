@@ -36,4 +36,4 @@ pb_loans |>
     y = "Count"
   )
 
-save_plot("investment-late-04-count-per-range.png")
+save_plot("investment/investment-late-04-count-per-range.png")

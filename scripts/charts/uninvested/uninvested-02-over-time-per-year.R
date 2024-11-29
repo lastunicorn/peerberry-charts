@@ -37,4 +37,5 @@ pb_transactions |>
     y = "Cash drag (€)"
   )
 
+save_plot("uninvested/uninvested-02-amount-over-time-per-year.png")
 save_plot("uninvested-02-amount-over-time-per-year.png")

@@ -15,4 +15,4 @@ pb_transactions |>
     y = "Investment size (€)"
   )
 
-save_plot("investment-amount-over-time-ever.png")
+save_plot("investment/investment-amount-01-over-time-ever.png")

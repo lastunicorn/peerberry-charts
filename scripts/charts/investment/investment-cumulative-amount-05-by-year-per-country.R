@@ -34,4 +34,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("investment-cumulative-amount-by-year-per-country.png", width=30, height=20)
+save_plot("investment/investment-cumulative-amount-05-by-year-per-country.png", width=30, height=20)

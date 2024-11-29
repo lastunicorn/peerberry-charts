@@ -33,4 +33,6 @@ pb_loans |>
     fill = "Status"
   )
 
+save_plot("investment/investment-amount-active-by-country.png")
 save_plot("investment-amount-active-by-country.png")
+save_plot(str_c("history-investment-amount-active/investment-amount-active-by-country-", pb_today, ".png"))

@@ -15,7 +15,10 @@ pb_transactions.first_month_as_date <- floor_date(pb_transactions.first_date, "m
 pb_transactions.last_month_as_date <- floor_date(pb_transactions.last_date, "month")
 
 pb_transactions.first_year_as_date <- floor_date(pb_transactions.first_date, "year")
+pb_transactions.first_year <- year(pb_transactions.first_year_as_date)
+
 pb_transactions.last_year_as_date <- floor_date(pb_transactions.last_date, "year")
+pb_transactions.last_year <- year(pb_transactions.last_year_as_date)
 
 pb_transactions.current_date = max(pb_transactions$date)
 

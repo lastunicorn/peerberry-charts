@@ -1,7 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
-
 # ------------------------------------------------------------------------------
 # Principal cumulative amount returned by day (ever)
 
@@ -37,4 +33,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("principal-cumulative-amount-by-day-per-year.png")
+save_plot("principal/principal-cumulative-amount-by-day-per-year.png")
