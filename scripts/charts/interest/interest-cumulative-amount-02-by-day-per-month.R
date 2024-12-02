@@ -26,4 +26,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-02-by-day-per-month.png")
 save_plot("interest-cumulative-amount-02-by-day-per-month.png")

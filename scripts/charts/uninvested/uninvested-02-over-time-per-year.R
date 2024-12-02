@@ -1,7 +1,3 @@
-library(dplyr)
-library(purrr)
-
-
 # ------------------------------------------------------------------------------
 # Uninvested amount over time (per year)
 
@@ -28,7 +24,11 @@ pb_transactions |>
   geom_area(fill = "gray60") +
   geom_line(color = "gray20") +
   facet_wrap(~ year, ncol = 1) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b",
+    minor_breaks = NULL
+  ) +
   scale_y_continuous(n.breaks = 20, minor_breaks = F) +
   labs(
     title = "Cash drag over time (per year)",

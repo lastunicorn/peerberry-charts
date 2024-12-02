@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by week days (per year)
 
@@ -23,6 +20,9 @@ pb_transactions |>
     size = 3
   ) +
   facet_wrap(~ year, ncol = 1) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1))
+  ) +
   labs(
     title = "Interest cumulative amount by week days (per year)",
     subtitle = str_c("today: ", pb_today),
@@ -30,4 +30,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-41-by-week-day-per-year.png")
 save_plot("interest-cumulative-amount-41-by-week-day-per-year.png")

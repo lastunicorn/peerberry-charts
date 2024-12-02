@@ -2,61 +2,56 @@
 # ROI - Interest % by month - per year
 
 pb_transactions |> 
+  mutate(
+    interest = if_else(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0)
+  ) |> 
   group_by(date) |> 
   summarize(
-    interest = sum(if_else(type %in% c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"), amount, 0)),
+    interest = sum(interest),
     funds_delta = sum(funds_delta)
-  ) |> 
-  mutate(
-    funds = cumsum(funds_delta)
   ) |> 
   arrange(date) |> 
   mutate(
-    start_date = min(date),
-    end_date = max(date) + days(1),
+    funds = cumsum(funds_delta),
     month_as_date = floor_date(date, "month")
   ) |> 
   add_row(
-    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11))
+    month_as_date = generate_monthly_dates(pb_transactions.first_year_as_date, pb_transactions.last_year_as_date + months(11)),
+    interest = 0
   ) |>
+  arrange(date) |> 
   mutate(
-    roi_percentage = if_else(is.na(lag(funds)), 0, interest * 100 / lag(funds)),
     investment_days = if_else(is.na(lag(date)), 0, as.numeric(date - lag(date))),
-    roi_percentage_pa = if_else(investment_days == 0, 0, roi_percentage * 365 / investment_days)
+    interest_percentage_peranum = interest_percentage_peranum(lag(date), date, lag(funds), interest)
   ) |> 
   group_by(month_as_date) |> 
   mutate(
-    month_first_date = floor_date(date, "month"),
-    month_first_date = if_else(month_first_date < pb_transactions.first_date, pb_transactions.first_date, month_first_date),
-    month_last_date = ceiling_date(date, "month") - days(1),
-    month_last_date = if_else(month_last_date > pb_transactions.last_date, pb_transactions.last_date, month_last_date),
-    month_interval = month_first_date %--% (month_last_date + days(1)),
-    days_in_month = month_interval / days(1)
+    days_in_month = pb.days_in_month(date)
   ) |> 
   summarize(
-    roi = sum(roi_percentage_pa * investment_days / first(days_in_month))
+    roi = sum(interest_percentage_peranum * investment_days / first(days_in_month))
   ) |> 
   mutate(
-    year = as.factor(year(month_as_date))
+    year = as.factor(year(month_as_date)),
+    month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
-  ggplot(aes(x = month_as_date, y = roi)) +
-  geom_col() +
+  ggplot(aes(x = month, y = roi)) +
+  geom_col(width = .7) +
   geom_text(
     aes(label = paste(format(round(roi, 2), nsmall = 2), "%")),
     vjust = -0.5,
     size = 3
   ) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(
-    date_breaks = "1 month",
-    date_labels = "%b",
-    minor_breaks = NULL
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1))
   ) +
   labs(
-    title = "Interest % (including cash drag) by month - per year",
+    title = "Interest % (including cash drag) by month (per year)",
     subtitle = str_c("today: ", pb_today),
     x = "Month",
     y = "ROI (% p.a.)"
   )
 
+save_plot("interest/interest-percentage-03-by-month-per-year.png")
 save_plot("interest-percentage-03-by-month-per-year.png")

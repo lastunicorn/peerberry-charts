@@ -41,3 +41,22 @@ pb_country_levels <- pb_loans |>
   summarize()
 
 pb_country_levels <- pb_country_levels[['country']]
+
+
+# ------------------------------------------------------------------------------
+# Late Investments
+
+pb.late_levels <- c("in time", "late 1-15", "late 16-30", "late 31-60", "defaulted")
+
+pb.late_category <- function(days) {
+  fct(
+    case_when(
+      days >= 0 ~ "in time",
+      days >= -15 ~ "late 1-15",
+      days >= -30 ~ "late 16-30",
+      days >= -60 ~ "late 31-60",
+      .default = "defaulted"
+    ),
+    levels = pb.late_levels
+  )
+}

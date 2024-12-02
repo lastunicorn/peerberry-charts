@@ -1,7 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount daily (per year)
 
@@ -30,4 +26,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-03-by-day-per-year.png")
 save_plot("interest-cumulative-amount-03-by-day-per-year.png")

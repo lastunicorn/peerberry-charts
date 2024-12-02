@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest count by week days (per month)
 
@@ -28,4 +25,4 @@ pb_transactions |>
     y = "Interest count"
   )
 
-save_plot("interest-count-01-by-week-day-per-month.png")
+save_plot("interest/interest-count-01-by-week-day-per-month.png")

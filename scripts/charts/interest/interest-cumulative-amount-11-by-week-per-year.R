@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by week (per year)
 
@@ -35,4 +32,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-11-by-week-per-year.png")
 save_plot("interest-cumulative-amount-11-by-week-per-year.png")

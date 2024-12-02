@@ -49,4 +49,5 @@ pb_transactions |>
     y = "ROI (% p.a.)"
   )
 
+save_plot("interest/interest-percentage-01-by-week-6-months.png", width = 60)
 save_plot("interest-percentage-01-by-week-6-months.png", width = 60)

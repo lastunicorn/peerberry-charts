@@ -9,18 +9,21 @@ pb_transactions |>
   ) |> 
   group_by(year, country) |> 
   summarize(
-    sum = sum(amount),
-    .groups = "drop_last"
+    amount = sum(amount),
+    .groups = "drop"
   ) |> 
-  ggplot(aes(x = country, y = sum)) +
+  ggplot(aes(x = country, y = amount)) +
   geom_col() +
   geom_text(
-    aes(label = sum),
+    aes(label = format_decimal(amount)),
     vjust = -0.5,
     size = 3
   ) +
   facet_wrap(~ year, ncol = 1) +
   guides(x = guide_axis(angle = 60)) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1))
+  ) +
   labs(
     title = "Investment amount by country (per year)",
     subtitle = str_c("today: ", pb_today),

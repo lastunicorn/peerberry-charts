@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by year (ever)
 
@@ -27,4 +24,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-30-by-year-ever.png")
 save_plot("interest-cumulative-amount-30-by-year-ever.png")

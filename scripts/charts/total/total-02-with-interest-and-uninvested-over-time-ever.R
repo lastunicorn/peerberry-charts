@@ -1,6 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
 # ------------------------------------------------------------------------------
 # Total amount with interest and uninvested over time (ever)
 

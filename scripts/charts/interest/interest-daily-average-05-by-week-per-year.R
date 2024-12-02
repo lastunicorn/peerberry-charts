@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest daily average amount by week days (per year)
 
@@ -35,4 +32,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("interest-daily-average-05-by-week-day-per-year.png")
+save_plot("interest/interest-daily-average-05-by-week-day-per-year.png")

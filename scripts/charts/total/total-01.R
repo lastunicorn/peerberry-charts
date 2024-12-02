@@ -1,6 +1,3 @@
-library(tidyverse)
-library(lubridate)
-
 # ------------------------------------------------------------------------------
 # Total amount (ever)
 

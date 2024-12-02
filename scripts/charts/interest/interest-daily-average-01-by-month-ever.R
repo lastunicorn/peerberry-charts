@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest daily average by month (ever)
 
@@ -45,4 +42,4 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
-save_plot("interest-daily-average-01-by-month-ever.png")
+save_plot("interest/interest-daily-average-01-by-month-ever.png")

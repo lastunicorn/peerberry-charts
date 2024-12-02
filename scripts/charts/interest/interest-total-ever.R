@@ -32,4 +32,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-total-over-time-ever.png")
 save_plot("interest-total-over-time-ever.png")

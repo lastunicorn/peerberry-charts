@@ -28,24 +28,21 @@ pb_transactions |>
     uninvested_percentage_average = 0
   ) |>
   mutate(
-    year = year(month_as_date)
+    year = year(month_as_date),
+    month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
-  ggplot(aes(x = month_as_date, y = uninvested_percentage_average)) +
-  geom_col() +
+  ggplot(aes(x = month, y = uninvested_percentage_average)) +
+  geom_col(width = .7) +
   geom_text(
     aes(label = if_else(uninvested_percentage_average == 0, NA, paste(format(round(uninvested_percentage_average, 2), nsmall = 2), "%"))),
     vjust = -0.5,
     size = 3
   ) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(
-    date_breaks = "1 month",
-    date_labels = "%b",
-    minor_breaks = NULL
-  ) +
   scale_y_continuous(
     n.breaks = 20,
-    minor_breaks = F
+    minor_breaks = F,
+    expand = expand_scale(mult = c(0.05, 0.1))
   ) +
   labs(
     title = "Cash drag percentage average by month (per year)",

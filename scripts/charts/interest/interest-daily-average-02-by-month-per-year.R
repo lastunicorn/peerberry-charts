@@ -17,21 +17,20 @@ pb_transactions |>
   ) |>
   mutate(
     year = as.factor(year(month_as_date)),
+    month = factor(format(month_as_date, "%b"), month.abb, ordered = T),
     days_in_month = pb_transactions.days_in_month(month_as_date),
     interest_amount = amount / days_in_month
   ) |> 
-  ggplot(aes(x = month_as_date, y = interest_amount)) +
-  geom_col() +
+  ggplot(aes(x = month, y = interest_amount)) +
+  geom_col(width = .7) +
   geom_text(
     aes(label = if_else(interest_amount == 0, NA, format(round(interest_amount, 2), nsmall = 2))),
     vjust = -0.5,
     size = 3
   ) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(
-    date_breaks = "1 month",
-    date_labels = "%b",
-    minor_breaks = NULL
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1))
   ) +
   labs(
     title = "Interest daily average by month (per year)",
@@ -40,4 +39,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-daily-average-02-by-month-per-year.png")
 save_plot("interest-daily-average-02-by-month-per-year.png")

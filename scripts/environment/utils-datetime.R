@@ -103,3 +103,8 @@ pb_transactions.days_in_month <- function(date) {
   
   return(days_in_month);
 }
+
+# ------------------------------------------------------------------------------
+# month_levels
+
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")

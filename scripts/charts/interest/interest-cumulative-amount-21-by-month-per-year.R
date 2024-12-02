@@ -14,20 +14,17 @@ pb_transactions |>
   arrange(date) |>
   summarize(interest_amount = sum(amount)) |>
   mutate(
-    year = year(month_as_date)
+    year = year(month_as_date),
+    month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
-  ggplot(aes(x = month_as_date, y = interest_amount)) +
-  geom_col() +
+  ggplot(aes(x = month, y = interest_amount)) +
+  geom_col(width = .7) +
   geom_text(aes(label = if_else(interest_amount == 0, NA, interest_amount)), vjust = -0.5, size = 3) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
-  scale_x_date(
-    date_breaks = "1 month",
-    date_labels = "%b",
-    minor_breaks = NULL
-  ) +
   scale_y_continuous(
     n.breaks = 15,
-    minor_breaks = F
+    minor_breaks = F,
+    expand = expand_scale(mult = c(0.05, 0.1))
   ) +
   labs(
     title = "Interest cumulative amount by month (per year)",
@@ -36,4 +33,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-21-by-month-by-year.png")
 save_plot("interest-cumulative-amount-21-by-month-by-year.png")

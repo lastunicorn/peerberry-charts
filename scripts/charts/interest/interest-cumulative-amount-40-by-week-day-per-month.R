@@ -1,6 +1,3 @@
-library(tidyverse)
-
-
 # ------------------------------------------------------------------------------
 # Interest cumulative amount by week days (per month) - 12 months
 
@@ -24,7 +21,13 @@ pb_transactions |>
     size = 3,
     color = "#666"
   ) +
-  facet_wrap(~ month_as_date, labeller = as_labeller(month_year_labeller)) +
+  facet_wrap(
+    ~ month_as_date,
+    labeller = as_labeller(month_year_labeller)
+  ) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1))
+  ) +
   labs(
     title = "Interest cumulative amount by week days (per month) - 12 months",
     subtitle = str_c("today: ", pb_today),
@@ -32,4 +35,5 @@ pb_transactions |>
     y = "Amount (€)"
   )
 
+save_plot("interest/interest-cumulative-amount-40-by-week-day-per-month.png")
 save_plot("interest-cumulative-amount-40-by-week-day-per-month.png")
