@@ -11,6 +11,7 @@ pb_transactions |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Individual investment amount over time (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Investment size (€)"
   )

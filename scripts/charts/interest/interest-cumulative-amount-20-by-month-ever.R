@@ -16,6 +16,7 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b %Y", minor_breaks = NULL) +
   labs(
     title = "Interest cumulative amount by month (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Month",
     y = "Amount (€)"
   )

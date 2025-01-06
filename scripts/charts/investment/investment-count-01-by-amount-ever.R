@@ -10,6 +10,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Investment count by amount (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Investment size (€)",
     y = "Investments count"
   )

@@ -29,6 +29,7 @@ pb_transactions |>
   ) +
   labs(
     title = "Principal cumulative amount returned by day (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )

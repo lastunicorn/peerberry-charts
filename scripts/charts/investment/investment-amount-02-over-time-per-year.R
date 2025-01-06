@@ -13,6 +13,7 @@ pb_transactions |>
   scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
   labs(
     title = "Individual investment amount over time (per year)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Investment size (€)"
   )

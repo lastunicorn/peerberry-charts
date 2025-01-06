@@ -12,6 +12,7 @@ pb_transactions |>
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Principal cumulative amount returned by day (ever)",
+    subtitle = str_c("today: ", pb_today),
     x = "Date",
     y = "Amount (€)"
   )
