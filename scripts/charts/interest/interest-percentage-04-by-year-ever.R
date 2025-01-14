@@ -40,7 +40,7 @@ pb_transactions |>
   labs(
     title = "Interest % (including cash drag) by year",
     subtitle = str_c("today: ", pb_today),
-    x = "Month",
+    x = "Year",
     y = "ROI (% p.a.)"
   )
 

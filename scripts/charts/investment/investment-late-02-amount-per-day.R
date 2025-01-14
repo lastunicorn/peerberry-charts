@@ -30,11 +30,16 @@ pb_loans |>
     },
     breaks = seq(from = -100, to = 60, by = 2)
   ) +
+  scale_fill_manual(
+    values = c("#30e5a2", "#f39383"),
+    labels = c("Current", "Late")
+  ) +
   labs(
     title = str_c("Late investments per day"),
     subtitle = str_c("today: ", pb_today),
     x = "Days",
-    y = "Amount (€)"
+    y = "Amount (€)",
+    fill = "Status"
   )
 
 
