@@ -34,6 +34,11 @@ pb_loans |>
     values = c("#30e5a2", "#f39383"),
     labels = c("Current", "Late")
   ) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.1)),
+    n.breaks = 20,
+    minor_breaks = F
+  ) +
   labs(
     title = str_c("Late investments per day"),
     subtitle = str_c("today: ", pb_today),

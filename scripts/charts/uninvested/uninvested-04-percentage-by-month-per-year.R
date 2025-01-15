@@ -32,7 +32,7 @@ pb_transactions |>
     month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
   ggplot(aes(x = month, y = uninvested_percentage_average)) +
-  geom_col(width = .7) +
+  geom_col(width = .5) +
   geom_text(
     aes(label = if_else(uninvested_percentage_average == 0, NA, paste(format(round(uninvested_percentage_average, 2), nsmall = 2), "%"))),
     vjust = -0.5,

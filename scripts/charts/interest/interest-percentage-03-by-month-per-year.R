@@ -44,7 +44,9 @@ pb_transactions |>
   ) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
   scale_y_continuous(
-    expand = expand_scale(mult = c(0.05, 0.1))
+    expand = expand_scale(mult = c(0.05, 0.1)),
+    n.breaks = 10,
+    minor_breaks = F
   ) +
   labs(
     title = "Interest % (including cash drag) by month (per year)",

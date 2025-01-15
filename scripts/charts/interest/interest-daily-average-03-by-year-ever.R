@@ -18,6 +18,11 @@ pb_transactions |>
     vjust = -0.5,
     size = 3
   ) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.075)),
+    n.breaks = 20,
+    minor_breaks = F
+  ) +
   labs(
     title = "Interest daily average by year (ever)",
     subtitle = str_c("today: ", pb_today),

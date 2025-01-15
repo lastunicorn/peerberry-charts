@@ -23,7 +23,9 @@ pb_loans |>
   ) +
   scale_x_discrete(drop = FALSE) +
   scale_y_continuous(
-    expand = expand_scale(mult = c(0.05, 0.1))
+    expand = expand_scale(mult = c(0.05, 0.1)),
+    n.breaks = 20,
+    minor_breaks = F
   ) +
   labs(
     title = "Late investments per ranges",

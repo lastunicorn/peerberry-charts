@@ -26,7 +26,9 @@ pb_transactions |>
     labeller = as_labeller(month_year_labeller)
   ) +
   scale_y_continuous(
-    expand = expand_scale(mult = c(0.05, 0.1))
+    expand = expand_scale(mult = c(0.05, 0.1)),
+    n.breaks = 10,
+    minor_breaks = F
   ) +
   labs(
     title = "Interest cumulative amount by week days (per month) - 12 months",

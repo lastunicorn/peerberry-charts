@@ -17,6 +17,10 @@ pb_transactions |>
     vjust = -0.5,
     size = 3
   ) +
+  scale_y_continuous(
+    n.breaks = 20,
+    minor_breaks = F
+  ) +
   labs(
     title = "Interest cumulative amount by year (ever)",
     subtitle = str_c("today: ", pb_today),

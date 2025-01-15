@@ -22,7 +22,9 @@ pb_transactions |>
   facet_wrap(~ year, ncol = 1) +
   guides(x = guide_axis(angle = 60)) +
   scale_y_continuous(
-    expand = expand_scale(mult = c(0.05, 0.1))
+    expand = expand_scale(mult = c(0.05, 0.1)),
+    n.breaks = 10,
+    minor_breaks = F
   ) +
   labs(
     title = "Investment amount by country (per year)",

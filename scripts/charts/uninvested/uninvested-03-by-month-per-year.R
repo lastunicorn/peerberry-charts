@@ -28,15 +28,15 @@ pb_transactions |>
     month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
   ggplot(aes(x = month, y = uninvested_amount)) +
-  geom_col(width = .7) +
+  geom_col(width = .5) +
   geom_text(
     aes(label = if_else(uninvested_amount == 0, NA, format(round(uninvested_amount, 2), nsmall = 2))),
     vjust = -0.5,
     size = 3
   ) +
-  facet_wrap(~ year, ncol = 1, scales = "free_x") +
+  facet_wrap(~ year, ncol = 1) +
   scale_y_continuous(
-    n.breaks = 20,
+    n.breaks = 10,
     minor_breaks = F,
     expand = expand_scale(mult = c(0.05, 0.1))
   ) +

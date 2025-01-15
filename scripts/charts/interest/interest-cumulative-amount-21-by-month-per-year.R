@@ -22,7 +22,7 @@ pb_transactions |>
   geom_text(aes(label = if_else(interest_amount == 0, NA, interest_amount)), vjust = -0.5, size = 3) +
   facet_wrap(~ year, ncol = 1, scales = "free_x") +
   scale_y_continuous(
-    n.breaks = 15,
+    n.breaks = 10,
     minor_breaks = F,
     expand = expand_scale(mult = c(0.05, 0.1))
   ) +

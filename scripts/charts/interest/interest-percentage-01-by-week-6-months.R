@@ -42,6 +42,11 @@ pb_transactions |>
     date_labels = "%b %Y",
     minor_breaks = NULL
   ) +
+  scale_y_continuous(
+    expand = expand_scale(mult = c(0.05, 0.075)),
+    n.breaks = 20,
+    minor_breaks = F
+  ) +
   labs(
     title = "Interest % (including cash drag) by week - last 6 months",
     subtitle = str_c("today: ", pb_today),

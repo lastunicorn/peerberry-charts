@@ -24,6 +24,10 @@ pb_loans |>
     color = "white"
   )+
   scale_x_discrete(drop = FALSE) +
+  scale_y_continuous(
+    n.breaks = 20,
+    minor_breaks = F
+  ) +
   guides(x = guide_axis(angle = 60)) +
   labs(
     title = "Investment amount active by country",

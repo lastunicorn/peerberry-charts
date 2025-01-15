@@ -19,6 +19,10 @@ pb_transactions |>
     n.breaks = 10,
     minor_breaks = F
   ) +
+  scale_y_continuous(
+    n.breaks = 10,
+    minor_breaks = F
+  ) +
   labs(
     title = "Interest cumulative amount by day (per month) - 12 months",
     subtitle = str_c("today: ", pb_today),

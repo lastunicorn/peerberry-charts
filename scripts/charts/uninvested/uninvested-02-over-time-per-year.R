@@ -29,7 +29,10 @@ pb_transactions |>
     date_labels = "%b",
     minor_breaks = NULL
   ) +
-  scale_y_continuous(n.breaks = 20, minor_breaks = F) +
+  scale_y_continuous(
+    n.breaks = 10,
+    minor_breaks = F
+  ) +
   labs(
     title = "Cash drag over time (per year)",
     subtitle = str_c("today: ", pb_today),

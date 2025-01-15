@@ -18,7 +18,7 @@ temp |>
     breaks = round(seq(0, max(temp$estimated_days), by = 2), 1)
   ) +
   scale_y_continuous(
-    n.breaks = 15,
+    n.breaks = 10,
     minor_breaks = F
   ) +
   expand_limits(x = 0) +

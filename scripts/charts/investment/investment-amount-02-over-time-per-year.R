@@ -10,7 +10,15 @@ pb_transactions |>
   ggplot(aes(x = date_without_year, y = amount)) +
   geom_point(color = "gray40", size = .7, position = "jitter") +
   facet_wrap(~ year, ncol = 1) +
-  scale_x_date(date_breaks = "1 month", date_labels = "%b", minor_breaks = NULL) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%b",
+    minor_breaks = NULL
+  ) +
+  scale_y_continuous(
+    n.breaks = 10,
+    minor_breaks = F
+  ) +
   labs(
     title = "Individual investment amount over time (per year)",
     subtitle = str_c("today: ", pb_today),

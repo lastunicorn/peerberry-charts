@@ -23,6 +23,10 @@ pb_transactions |>
   facet_wrap(~ country) +
   guides(x = guide_axis(angle = 70)) +
   theme(axis.text = element_text(size = 7)) +
+  scale_y_continuous(
+    n.breaks = 10,
+    minor_breaks = F
+  ) +
   labs(
     title = "Investment amount by month (per country) - last 12 months",
     subtitle = str_c("today: ", pb_today),
