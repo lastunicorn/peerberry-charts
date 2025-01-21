@@ -36,7 +36,7 @@ pb_transactions |>
     month = factor(format(month_as_date, "%b"), month.abb, ordered = T)
   ) |> 
   ggplot(aes(x = month, y = roi)) +
-  geom_col(width = .7) +
+  geom_col(width = .5) +
   geom_text(
     aes(label = paste(format(round(roi, 2), nsmall = 2), "%")),
     vjust = -0.5,
