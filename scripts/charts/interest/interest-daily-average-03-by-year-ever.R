@@ -4,14 +4,17 @@
 pb_transactions |>
   filter(is.element(type, c("BUYBACK_INTEREST", "REPAYMENT_INTEREST"))) |>
   mutate(
-    year = year(date),
-    year = as.factor(year),
-    days_in_year = (make_date(year, 01, 01) %--% make_date(as.numeric(year) + 1, 01, 01)) / days(1)
+    year = year(date)
   ) |>
   group_by(year) |>
+  summarize(
+    amount = sum(amount)
+  ) |>
+  mutate(
+    interest_amount = amount / pb_transactions.days_in_year(year)
+  ) |> 
   arrange(year) |>
-  summarize(interest_amount = sum(amount) / first(days_in_year)) |>
-  ggplot(aes(x = year, y = interest_amount)) +
+  ggplot(aes(x = as.factor(year), y = interest_amount)) +
   geom_col(width = .5) +
   geom_text(
     aes(label = format(round(interest_amount, 2), nsmall = 2)),

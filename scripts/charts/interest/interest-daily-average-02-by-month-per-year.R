@@ -18,11 +18,10 @@ pb_transactions |>
   mutate(
     year = as.factor(year(month_as_date)),
     month = factor(format(month_as_date, "%b"), month.abb, ordered = T),
-    days_in_month = pb_transactions.days_in_month(month_as_date),
-    interest_amount = amount / days_in_month
+    interest_amount = amount / pb_transactions.days_in_month(month_as_date)
   ) |> 
   ggplot(aes(x = month, y = interest_amount)) +
-  geom_col(width = .7) +
+  geom_col(width = .5) +
   geom_text(
     aes(label = if_else(interest_amount == 0, NA, format(round(interest_amount, 2), nsmall = 2))),
     vjust = -0.5,

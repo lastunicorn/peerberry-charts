@@ -8,7 +8,8 @@ temp <- pb_loans |>
   mutate(
     estimated_days = as.integer(estimated_final_payment_date - date_of_purchase),
     purchese_year = year(date_of_purchase)
-  )
+  ) |> 
+  filter(estimated_days <= 100)
 
 temp |> 
   ggplot(aes(x = estimated_days)) +
@@ -23,7 +24,7 @@ temp |>
   ) +
   expand_limits(x = 0) +
   labs(
-    title = "Investment count by length in days (per year)",
+    title = "Investment count by length in days (per year) - 100 days",
     subtitle = str_c("today: ", pb_today),
     x = "Days",
     y = "Count"
